@@ -4,7 +4,6 @@ import multiprocessing
 import subprocess
 import os
 import distutils.spawn
-import signal
 from os import system, name
 
 
@@ -16,6 +15,8 @@ def clear():
 
 
 def binary_exists(binary):
+    if name == "nt":
+        return distutils.spawn.find_executable(binary+".exe")
     return distutils.spawn.find_executable(binary)
 
 
@@ -24,7 +25,7 @@ def backend_start():
     if binary_exists("bun"):
         subprocess.run(["bun", "install"])
         subprocess.run(["bun", "src/index.ts"])
-    elif binary_exists("npm") and binary_exists("node"):
+    elif binary_exists("node"):
         subprocess.run(["npm", "install"])
         subprocess.run(["node", "src/index.ts"])
     else:
@@ -37,19 +38,12 @@ def frontend_start():
     if binary_exists("bun"):
         subprocess.run(["bun", "install"])
         subprocess.run(["bun", "run", "dev", "--", "--open"])
-    elif binary_exists("npm"):
+    elif binary_exists("node"):
         subprocess.run(["npm", "install"])
         subprocess.run(["npm", "run", "dev", "--", "--open"])
     else:
         print("Neither bun nor npm is available. Exiting")
         exit(1)
-
-
-def signal_handler(sig, frame):
-    exit(0)
-
-
-signal.signal(signal.SIGINT, signal_handler)
 
 if __name__ == "__main__":
     clear()
@@ -66,5 +60,3 @@ if __name__ == "__main__":
     print("[\x1b[34m!\x1b[00m] Staring frontend on port 5173\n")
     frontend = multiprocessing.Process(target=frontend_start)
     frontend.start()
-
-signal.pause()
