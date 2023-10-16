@@ -6,6 +6,9 @@ import os
 import distutils.spawn
 from os import system, name
 
+suffix = ""
+if name == "nt":
+    suffix = ".exe"
 
 def clear():
     if name == "nt":
@@ -15,19 +18,17 @@ def clear():
 
 
 def binary_exists(binary):
-    if name == "nt":
-        return distutils.spawn.find_executable(binary+".exe")
-    return distutils.spawn.find_executable(binary)
+    return distutils.spawn.find_executable(binary+suffix)
 
 
 def backend_start():
     os.chdir("Backend")
     if binary_exists("bun"):
-        subprocess.run(["bun", "install"])
-        subprocess.run(["bun", "src/index.ts"])
+        subprocess.run(["bun"+suffix, "install"])
+        subprocess.run(["bun"+suffix, "src/index.ts"])
     elif binary_exists("node"):
-        subprocess.run(["npm", "install"])
-        subprocess.run(["node", "src/index.ts"])
+        subprocess.run(["npm"+suffix, "install"])
+        subprocess.run(["node"+suffix, "src/index.ts"])
     else:
         print("Neither bun nor npm+node is available. Exiting")
         exit(1)
@@ -36,11 +37,11 @@ def backend_start():
 def frontend_start():
     os.chdir("Frontend")
     if binary_exists("bun"):
-        subprocess.run(["bun", "install"])
-        subprocess.run(["bun", "run", "dev", "--", "--open"])
+        subprocess.run(["bun"+suffix, "install"])
+        subprocess.run(["bun"+suffix, "run", "dev", "--", "--open"])
     elif binary_exists("node"):
-        subprocess.run(["npm", "install"])
-        subprocess.run(["npm", "run", "dev", "--", "--open"])
+        subprocess.run(["npm"+suffix, "install"])
+        subprocess.run(["npm"+suffix, "run", "dev", "--", "--open"])
     else:
         print("Neither bun nor npm is available. Exiting")
         exit(1)
