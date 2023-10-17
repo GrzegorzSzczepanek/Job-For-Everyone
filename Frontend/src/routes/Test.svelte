@@ -5,10 +5,20 @@
 
 </script>
 
-{#await promise}
-	<p>...waiting</p>
-{:then response}
-<h1>Message: {response.message}</h1>
-{:catch error}
-	<p style="color: red">{error.message}</p>
-{/await}
+<div>
+    {#await promise}
+        <p>...waiting</p>
+    {:then response}
+        <p>Message: {response.message}</p>
+    {:catch error}
+        <p style="color: red">{error.message}</p>
+    {/await}
+</div>
+
+<style lang="scss">
+    div {
+        p {
+            font-family: 'Raleway';
+        }
+    }
+</style>
