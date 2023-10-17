@@ -54,10 +54,10 @@ if __name__ == "__main__":
     \x1b[33m================\x1b[00m
     """
     )
-    print("[\x1b[34m!\x1b[00m] Staring backend on port 3000")
+    print("[\x1b[34m!\x1b[00m] Starting backend on port 3000")
     backend = multiprocessing.Process(target=backend_start)
     backend.start()
 
-    print("[\x1b[34m!\x1b[00m] Staring frontend on port 5173\n")
+    print("[\x1b[34m!\x1b[00m] Starting frontend on port 5173\n")
     frontend = multiprocessing.Process(target=frontend_start)
     frontend.start()
