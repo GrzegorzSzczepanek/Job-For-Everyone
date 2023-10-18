@@ -1,5 +1,5 @@
 <script>
-	import Field from "$lib/components/Field.svelte";
+	import Searchbar from "$lib/components/Searchbar.svelte";
 </script>	
 
-<Field type="text" />
+<Searchbar />
