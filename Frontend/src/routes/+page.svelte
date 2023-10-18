@@ -1,6 +1,7 @@
 <script>
-	import Test from "./Test.svelte";
+	import Field from "$lib/components/Field.svelte";
 
-</script>
 
-<Test />
+</script>	
+
+<Field type="text" />
