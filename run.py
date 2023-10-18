@@ -3,7 +3,7 @@
 import multiprocessing
 import subprocess
 import os
-import distutils.spawn
+import shutil
 from os import system, name
 
 suffix = ""
@@ -18,7 +18,9 @@ def clear():
 
 
 def binary_exists(binary):
-    return distutils.spawn.find_executable(binary+suffix)
+    if binary == "npm":
+        return shutil.which(binary) is not None
+    return shutil.which(binary+suffix) is not None
 
 
 def backend_start():
@@ -26,9 +28,15 @@ def backend_start():
     if binary_exists("bun"):
         subprocess.run(["bun"+suffix, "install"])
         subprocess.run(["bun"+suffix, "src/index.ts"])
-    elif binary_exists("node"):
-        subprocess.run(["npm"+suffix, "install"])
-        subprocess.run(["node"+suffix, "src/index.ts"])
+    elif binary_exists("node") and binary_exists("npm"):
+        if name == "nt":
+            # windows
+            subprocess.run(["npm.cmd", "--silent", "install"])
+            subprocess.run(["node"+suffix, "src/index.ts"])
+        else:
+            # unix
+            subprocess.run(["npm", "install"])
+            subprocess.run(["node"+suffix, "src/index.ts"])
     else:
         print("Neither bun nor npm+node is available. Exiting")
         exit(1)
@@ -39,9 +47,15 @@ def frontend_start():
     if binary_exists("bun"):
         subprocess.run(["bun"+suffix, "install"])
         subprocess.run(["bun"+suffix, "run", "dev", "--", "--open"])
-    elif binary_exists("node"):
-        subprocess.run(["npm"+suffix, "install"])
-        subprocess.run(["npm"+suffix, "run", "dev", "--", "--open"])
+    elif binary_exists("npm"):
+        if name == "nt":
+            # windows
+            subprocess.run(["npm.cmd", "--silent", "install"])
+            subprocess.run(["npm.cmd", "run", "dev", "--", "--open"])
+        else:
+            # unix
+            subprocess.run(["npm", "install"])
+            subprocess.run(["npm", "run", "dev", "--", "--open"])
     else:
         print("Neither bun nor npm is available. Exiting")
         exit(1)
