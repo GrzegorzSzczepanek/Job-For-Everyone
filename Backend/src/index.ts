@@ -6,7 +6,19 @@ pass_hash varchar(255),
 email varchar(255)
 );
 
+create table publications (
+id INTEGER PRIMARY KEY,
+title varchar(255),
+authors varchar(255),
+categories varchar(255),
+number_of_pages int,
+file varchar(255)
+);
+
 insert into users (username, pass_hash, email) values ("user1", "hash1", "email1");
+insert into users (username, pass_hash, email) values ("user2", "hash2", "email2");
+insert into publications (title, authors, categories, number_of_pages, file) values ("title1", "authors1", "categories1", 100, "file1");
+insert into publications (title, authors, categories, number_of_pages, file) values ("title2", "authors2", "categories2", 200, "file2");
 
 
 /search
@@ -27,8 +39,10 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { createClient } = require('@libsql/client');
-const bcrypt = require("bcrypt");
+const jsruntime = require('js-runtime');
+const bcrypt = jsruntime.isBun() ? undefined : require('bcrypt');
 const saltRounds = 10;
+const jwt = require('jsonwebtoken');
 
 const app = express();
 
@@ -36,6 +50,7 @@ const db = createClient({
     url: 'libsql://closing-kree-figyel0002.turso.io',
     authToken: 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOiIyMDIzLTEwLTE4VDIwOjU2OjQzLjg2ODYwNDg4NVoiLCJpZCI6IjU1ZTFkMGNhLTZkZjgtMTFlZS1hYTY0LThhMzhjZTlmZjA5NSJ9.D_lnuc3RVHewV9DaA47dRysdyBbnsX1sUUEAr99qftlQgndCfOlqmqciwV3bAnAcrN8SWHR8SlxDOk8ZBarlCg'
 });
+const session_key = 'dihllskjdindrtidjlhmuflrkunho57jy374y7328&#$YHIERI'
 
 app.use(express.json());
 app.use(cors())
@@ -64,14 +79,25 @@ app.post('/login', async (req, res) => {
     }
 
     let pass_hash = rows.rows[0].pass_hash;
-    return bcrypt.compare(password, pass_hash, (err, res2) => {
-        if (res2) {
-            // TODO: proper auth key (JWT)
-            return res.json({ status: "OK", authkey: "secretkey" });
+    if (jsruntime.isBun()) {
+        if (await Bun.password.verify(password, pass_hash)) {
+            let user_obj = { username: rows.rows[0].username, pass_hash: rows.rows[0].pass_hash };
+            let token = jwt.sign(user_obj, session_key);
+            return res.json({ status: "OK", authkey: token });
         } else {
             return res.json({ status: "ERROR", message: "Wrong password" });
         }
-    });
+    } else {
+        return bcrypt.compare(password, pass_hash, (err, res2) => {
+            if (res2) {
+                let user_obj = { username: rows.rows[0].username, pass_hash: rows.rows[0].pass_hash };
+                let token = jwt.sign(user_obj, session_key);
+                return res.json({ status: "OK", authkey: token });
+            } else {
+                return res.json({ status: "ERROR", message: "Wrong password" });
+            }
+        });
+    }
 });
 
 app.post('/register', async (req, res) => {
@@ -103,19 +129,27 @@ app.post('/register', async (req, res) => {
         return res.json({ status: "ERROR", message: "Passwords wrong length" });
     }
 
-    // TODO: proper auth token (JWT)
-
-    const salt = await bcrypt.genSalt(saltRounds);
-    const pass_hash = await bcrypt.hash(password, salt);
+    let pass_hash = undefined;
+    if (jsruntime.isBun()) {
+        pass_hash = await Bun.password.hash(password);
+    } else {
+        const salt = await bcrypt.genSalt(saltRounds);
+        pass_hash = await bcrypt.hash(password, salt);
+    }
 
     db.execute({sql: "INSERT INTO users (username, pass_hash, email) VALUES (?, ?, ?)", args: [username, pass_hash, email]});
 
-    return res.json({ status: "OK", authkey: "secretkey" });
+    let user_obj = { username: username, pass_hash: pass_hash };
+    let token = jwt.sign(user_obj, session_key);
+    return res.json({ status: "OK", authkey: token });
 });
 
-app.get('/get', (req, res) => {
-    let filename = req.query.filename;
-    res.send(filename)
+app.get('/publication', (req, res) => {
+    let publication_id = req.query.id;
+    if (publication_id === undefined) {
+        return res.json({ status: "ERROR", message: "Publication id not provided" });
+    }
+    res.send(publication_id)
 });
 
 app.get('/search', (req, res) => {
@@ -158,24 +192,11 @@ app.get('/search', (req, res) => {
     ]);
 });
 
-app.get('/dbtest', async function(req, res) {
-    db.execute("SELECT * FROM users;").then(async (users) => {
-        const salt = await bcrypt.genSalt(saltRounds);
-        const hash = await bcrypt.hash("dupa", salt);
-        console.log(hash);
-        res.json(users.rows);
-    });
-});
-
-app.get('/get_user', (req, res) => {
-    console.log("get user");
+app.get('/user', (req, res) => {
     let username = req.query.username;
-    console.log("USERUSLJSLDKJF", username);
     if (username === undefined) {
-        console.log("get user undefined");
         return res.json({ status: "ERROR", message: "Username not provided" });
     }
-    console.log("get user ok");
     return res.json({ name: "Adam Mickiewicz" });
 })
 
