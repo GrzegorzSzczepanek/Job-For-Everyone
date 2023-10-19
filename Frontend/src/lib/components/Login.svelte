@@ -30,7 +30,7 @@
 
     <button type="submit" on:click={login}>Zaloguj</button>
 
-    <p class="signup">Nie masz konta?<button on:click={() => goto("/register")}>Zarejestruj się</button></p>
+    <p class="signup">Nie masz konta?<button type="button" on:click={() => goto("/register")}>Zarejestruj się</button></p>
 </form>
 
 <style lang="scss">

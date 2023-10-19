@@ -1,4 +1,4 @@
-const backendIp = "192.168.1.13";
+const backendIp = "192.168.60.233";
 
 export const backend = {
     get: async (endpoint: string, params : object): Promise<any> => {
