@@ -152,7 +152,7 @@ app.get('/publication', (req, res) => {
     res.send(publication_id)
 });
 
-app.get('/search', (req, res) => {
+app.get('/search', async (req, res) => {
     let query = req.query.query;
     if (query !== undefined) {
         // TODO: handle query
@@ -173,23 +173,10 @@ app.get('/search', (req, res) => {
     if (page !== undefined) {
         // TODO: handle page filter
     }
-    // TODO: return from the database
-    res.json([
-        {
-            title: "paper 1",
-            authors: ["author 1", "author 2"],
-            categories: ["cat1", "cat2"],
-            school: "school 1",
-            number_of_pages: 100
-        },
-        {
-            title: "paper 2",
-            authors: ["author 1", "author 2"],
-            categories: ["cat1", "cat2"],
-            school: "school 2",
-            number_of_pages: 101
-        }
-    ]);
+    let rows = await db.execute("SELECT * FROM publications");
+    rows = rows.rows;
+
+    res.json(rows);
 });
 
 app.get('/user', (req, res) => {
