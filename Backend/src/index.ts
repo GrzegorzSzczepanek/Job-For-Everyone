@@ -194,8 +194,17 @@ app.get('/user', (req, res) => {
     if (username === undefined) {
         return res.json({ status: "ERROR", message: "Username not provided" });
     }
-    return res.json({ name: "Adam Mickiewicz" });
-})
+    // TODO: check if the user exists in the DB
+    // TODO: extract this info from the DB
+    return res.json({
+        name: "Adam Mickiewicz",
+        profile_picture: "https://http.cat/404",
+        institution: "Institution",
+        bio: "bio lol test",
+        academic_fields: ["dupa1", "dupa2"],
+        publications: [{ title: "Title", publish_date: "pubdate", citations: 10, reviews: 11 }]
+    });
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
