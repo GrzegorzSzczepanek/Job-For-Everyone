@@ -8,7 +8,7 @@
     let confirmPassword = "test123";
 
     async function register() {
-        const registerData = backend.get("127.0.0.1", "register", {
+        const registerData = await backend.post("127.0.0.1", "register", {
             email: email,
             username: login,
             password: password,

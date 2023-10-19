@@ -6,7 +6,7 @@ let query = "";
 let dataReceived = [];
 
 async function sendQueri() {
-    let promise = await fetch("http://192.168.105.233:3000/search", {query: query});
+    let promise = await fetch("http://127.0.0.1:3000/search", {query: query});
     dataReceived = await promise.json();
     // console.log(dataReceived)
     

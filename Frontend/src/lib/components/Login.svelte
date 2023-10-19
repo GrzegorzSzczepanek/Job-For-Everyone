@@ -6,7 +6,7 @@
     let password = "";
 
     async function logIn() {
-        const registerData = backend.get("127.0.0.1", "register", {
+        const registerData = await backend.post("127.0.0.1", "login", {
             username: login,
             password: password
         });
