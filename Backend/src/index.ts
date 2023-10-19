@@ -121,6 +121,8 @@ app.post('/register', async (req, res) => {
         return res.json({ status: "ERROR", message: "User already exist" });
     }
 
+    // TODO: existing mail check
+
     if (password !== confirm_password) {
         return res.json({ status: "ERROR", message: "Passwords do not match" });
     }
@@ -137,19 +139,24 @@ app.post('/register', async (req, res) => {
         pass_hash = await bcrypt.hash(password, salt);
     }
 
-    db.execute({sql: "INSERT INTO users (username, pass_hash, email) VALUES (?, ?, ?)", args: [username, pass_hash, email]});
+    db.execute({ sql: "INSERT INTO users (username, pass_hash, email) VALUES (?, ?, ?)", args: [username, pass_hash, email] });
 
     let user_obj = { username: username, pass_hash: pass_hash };
     let token = jwt.sign(user_obj, session_key);
     return res.json({ status: "OK", authkey: token });
 });
 
-app.get('/publication', (req, res) => {
+app.get('/publication', async (req, res) => {
     let publication_id = req.query.id;
     if (publication_id === undefined) {
         return res.json({ status: "ERROR", message: "Publication id not provided" });
     }
-    res.send(publication_id)
+    let rows = await db.execute({ sql: "SELECT * FROM publications WHERE id = ?", args: [publication_id] });
+    if (rows.rows.length === 0) {
+        return res.json({ status: "ERROR", message: "Publication not found" });
+    }
+    let publication = rows.rows[0];
+    res.json(publication);
 });
 
 app.get('/search', async (req, res) => {
