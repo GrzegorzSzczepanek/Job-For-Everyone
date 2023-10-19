@@ -121,7 +121,10 @@ app.post('/register', async (req, res) => {
         return res.json({ status: "ERROR", message: "User already exist" });
     }
 
-    // TODO: existing mail check
+    let email_rows = await db.execute({sql: "SELECT * FROM users WHERE email = ?", args: [email]});
+    if (email_rows.rows.length !== 0) {
+        return res.json({ status: "ERROR", message: "User with this email already exists" });
+    }
 
     if (password !== confirm_password) {
         return res.json({ status: "ERROR", message: "Passwords do not match" });
