@@ -14,7 +14,6 @@
             password: password,
             confirm_password: confirmPassword
         });
-        console.log(registerData);
         if(registerData.status == "OK") {
             cookies.set("authkey", registerData.authkey);
             cookies.set("loggedAs", username);
@@ -26,9 +25,8 @@
 
 </script>
 
-<h1>Zarejestruj</h1>
-
 <form>
+    <h1>Zarejestruj</h1>
     <label for="email">Email</label>
     <input type="email" name="email" id="email" bind:value={email}>
     <label for="login">Login</label>
@@ -44,15 +42,8 @@
 </form>
 
 <style lang="scss">
-    h1 {
-        color: #fff;
-        font-family: 'DM Sans';
-        margin-bottom: 20px;
-        font-size: 36px;
-    }
-
     form {
-        width: 230px;
+        width: 270px;
         font-family: 'DM Sans';
         display: flex;
         flex-direction: column;
@@ -60,6 +51,14 @@
         background: #fff;
         box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
         border-radius: 10px;
+        
+        h1 {
+            color: #000;
+            font-family: 'DM Sans';
+            font-size: 36px;
+            margin: 0;
+            margin-bottom: 15px;
+        }
 
         label {
             font-weight: 500;
@@ -100,6 +99,7 @@
             color: #b67ede;
             background: none;
             font-weight: bold;
+            cursor: pointer;
         }
     }
 </style>

@@ -10,7 +10,6 @@
             username: username,
             password: password
         });
-        console.log(loginData);
         if(loginData.status == "OK") {
             cookies.set("authkey", loginData.authkey);
             cookies.set("loggedAs", username);
@@ -22,9 +21,8 @@
 
 </script>
 
-<h1>Logowanie</h1>
-
 <form>
+    <h1>Logowanie</h1>
     <label for="login">Login</label>
     <input type="text" name="login" id="login" bind:value={username}>
     <label for="password">Hasło</label>
@@ -36,12 +34,6 @@
 </form>
 
 <style lang="scss">
-    h1 {
-        color: #fff;
-        font-family: 'DM Sans';
-        margin-bottom: 20px;
-        font-size: 36px;
-    }
 
     form {
         width: 230px;
@@ -52,6 +44,14 @@
         background: #fff;
         box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
         border-radius: 10px;
+
+        h1 {
+            color: #000;
+            font-family: 'DM Sans';
+            font-size: 36px;
+            margin: 0;
+            margin-bottom: 15px;
+        }
 
         label {
             font-weight: 500;
@@ -92,6 +92,7 @@
             color: #b67ede;
             background: none;
             font-weight: bold;
+            cursor: pointer;
         }
     }
 </style>
