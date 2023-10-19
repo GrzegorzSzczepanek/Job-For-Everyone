@@ -1,28 +1,32 @@
 <script>
     import { goto } from '$app/navigation';
-	import { backend } from '$lib';
+	import { backend, cookies } from '$lib';
 
-    let login = "";
+    let username = "";
     let password = "";
 
-    async function logIn() {
-        const registerData = await backend.post("login", {
-            username: login,
+    async function login() {
+        const loginData = await backend.post("login", {
+            username: username,
             password: password
         });
-        console.log(registerData);
-        if(registerData.status == "OK") goto("/");
+        console.log(loginData);
+        if(loginData.status == "OK") {
+            cookies.set("authkey", loginData.authkey);
+            cookies.set("loggedAs", username);
+            goto("/");
+        }
     }
 
 </script>
 
 <form>
     <label for="login">Login</label>
-    <input type="text" name="login" id="login" bind:value={login}>
+    <input type="text" name="login" id="login" bind:value={username}>
     <label for="password">password</label>
     <input type="password" name="password" id="password" bind:value={password}>
 
-    <button type="submit" on:click={logIn}>Log in</button>
+    <button type="submit" on:click={login}>Log in</button>
 </form>
 
 <style lang="scss">

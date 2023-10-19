@@ -1,21 +1,25 @@
 <script>
     import { goto } from '$app/navigation';
-	import { backend } from '$lib';
+	import { backend, cookies } from '$lib';
 
     let email = "kocham.mamusie@wp.pl";
-    let login = "login";
+    let username = "login";
     let password = "test123";
     let confirmPassword = "test123";
 
     async function register() {
         const registerData = await backend.post("register", {
             email: email,
-            username: login,
+            username: username,
             password: password,
             confirm_password: confirmPassword
         });
         console.log(registerData);
-        if(registerData.status == "OK") goto("/");
+        if(registerData.status == "OK") {
+            cookies.set("authkey", registerData.authkey);
+            cookies.set("loggedAs", username);
+            goto("/");
+        }
     }
 
 </script>
@@ -24,7 +28,7 @@
     <label for="email">Email</label>
     <input type="text" name="email" id="email" bind:value={email}>
     <label for="login">Login</label>
-    <input type="text" name="login" id="login" bind:value={login}>
+    <input type="text" name="login" id="login" bind:value={username}>
     <label for="password">Hasło</label>
     <input type="text" name="password" id="password" bind:value={password}>
     <label for="confirmPassword">Powtórz Hasło</label>
