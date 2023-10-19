@@ -7,6 +7,20 @@ email varchar(255)
 );
 
 insert into users (username, pass_hash, email) values ("user1", "hash1", "email1");
+
+
+/search
+
+?query=xyz
+?author=xyz
+?category=xyz
+?count=xyz
+?page=xyz
+
+
+
+[dupa]
+fetch backend/search?query=xyz&page=1
 */
 
 const express = require('express');
