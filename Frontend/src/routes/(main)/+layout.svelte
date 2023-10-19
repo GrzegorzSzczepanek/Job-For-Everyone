@@ -1,23 +1,26 @@
 <script>
-	import Searchbar from "$lib/components/Searchbar.svelte";
+	import Footer from "$lib/components/Footer.svelte";
+import Navbar from "$lib/components/Navbar.svelte";
+import Searchbar from "$lib/components/Searchbar.svelte";
 
 </script>
-<nav>
-    <Searchbar />
-</nav>
 
-<slot></slot>
-
-<footer>
-    Made By: Gwiezdna flota
-</footer>
+<div class="app">
+    <Navbar />
+    
+    <slot></slot>
+    
+    <Footer />
+</div>
 
 <style lang="scss">
-    nav {
-        width: 100%;
+    .app {
+        width: 100vw;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
     }
-
-    footer {
-        width: 100%;
-    }
+    
 </style>
