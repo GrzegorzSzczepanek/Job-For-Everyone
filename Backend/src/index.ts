@@ -29,6 +29,7 @@ const bodyParser = require('body-parser');
 const { createClient } = require('@libsql/client');
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+const jwt = require('jsonwebtoken');
 
 const app = express();
 
@@ -36,6 +37,7 @@ const db = createClient({
     url: 'libsql://closing-kree-figyel0002.turso.io',
     authToken: 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOiIyMDIzLTEwLTE4VDIwOjU2OjQzLjg2ODYwNDg4NVoiLCJpZCI6IjU1ZTFkMGNhLTZkZjgtMTFlZS1hYTY0LThhMzhjZTlmZjA5NSJ9.D_lnuc3RVHewV9DaA47dRysdyBbnsX1sUUEAr99qftlQgndCfOlqmqciwV3bAnAcrN8SWHR8SlxDOk8ZBarlCg'
 });
+const session_key = 'dihllskjdindrtidjlhmuflrkunho57jy374y7328&#$YHIERI'
 
 app.use(express.json());
 app.use(cors())
@@ -66,8 +68,9 @@ app.post('/login', async (req, res) => {
     let pass_hash = rows.rows[0].pass_hash;
     return bcrypt.compare(password, pass_hash, (err, res2) => {
         if (res2) {
-            // TODO: proper auth key (JWT)
-            return res.json({ status: "OK", authkey: "secretkey" });
+            let user_obj = { username: rows.rows[0].username, pass_hash: rows.rows[0].pass_hash };
+            let token = jwt.sign(user_obj, session_key);
+            return res.json({ status: "OK", authkey: token });
         } else {
             return res.json({ status: "ERROR", message: "Wrong password" });
         }
@@ -103,14 +106,14 @@ app.post('/register', async (req, res) => {
         return res.json({ status: "ERROR", message: "Passwords wrong length" });
     }
 
-    // TODO: proper auth token (JWT)
-
     const salt = await bcrypt.genSalt(saltRounds);
     const pass_hash = await bcrypt.hash(password, salt);
 
     db.execute({sql: "INSERT INTO users (username, pass_hash, email) VALUES (?, ?, ?)", args: [username, pass_hash, email]});
 
-    return res.json({ status: "OK", authkey: "secretkey" });
+    let user_obj = { username: username, pass_hash: pass_hash };
+    let token = jwt.sign(user_obj, session_key);
+    return res.json({ status: "OK", authkey: token });
 });
 
 app.get('/get', (req, res) => {
