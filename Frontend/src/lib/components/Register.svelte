@@ -2,13 +2,17 @@
     import { goto } from '$app/navigation';
 	import { backend } from '$lib';
 
-    let login = "";
-    let password = "";
+    let email = "kocham.mamusie@wp.pl";
+    let login = "login";
+    let password = "test123";
+    let confirmPassword = "test123";
 
-    async function logIn() {
+    async function register() {
         const registerData = backend.get("127.0.0.1", "register", {
+            email: email,
             username: login,
-            password: password
+            password: password,
+            confirm_password: confirmPassword
         });
         console.log(registerData);
         if(registerData.status == "OK") goto("/");
@@ -17,12 +21,16 @@
 </script>
 
 <form>
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email" bind:value={email}>
     <label for="login">Login</label>
     <input type="text" name="login" id="login" bind:value={login}>
-    <label for="password">password</label>
+    <label for="password">Hasło</label>
     <input type="text" name="password" id="password" bind:value={password}>
+    <label for="confirmPassword">Powtórz Hasło</label>
+    <input type="text" name="confirmPassword" id="confirmPassword" bind:value={confirmPassword}>
 
-    <button type="submit" on:click={logIn}>Log in</button>
+    <button type="submit" on:click={register}>Register</button>
 </form>
 
 <style lang="scss">
