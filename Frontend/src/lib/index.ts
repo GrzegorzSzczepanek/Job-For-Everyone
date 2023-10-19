@@ -1,4 +1,4 @@
-const backendIp = "192.168.60.233";
+const backendIp = "127.0.0.1";
 
 export const backend = {
     get: async (endpoint: string, params : object): Promise<any> => {
@@ -19,7 +19,7 @@ export const backend = {
 }
 
 export const cookies = {
-    get: (key: string) => {
+    get: (key: string | undefined) => {
         let cname = key + '=';
         let decoded_cookie = decodeURIComponent(document.cookie);
         let ca = decoded_cookie.split(';');
@@ -32,7 +32,7 @@ export const cookies = {
                 return c.substring(cname.length, c.length);
             }
         }
-        return '';
+        return undefined;
     },
     set: (key: string, value: string) => {
         document.cookie = `${key}=${value};`;

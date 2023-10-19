@@ -8,6 +8,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        font-family: 'Raleway';
         padding: 15px;
     }
 </style>

@@ -4,4 +4,13 @@
 
 body {
     margin: 0;
+    font-family: 'DM Sans';
+}
+
+button {
+    border: none;
+    color: #b67ede;
+    background: none;
+    font-weight: bold;
+    cursor: pointer;
 }

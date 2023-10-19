@@ -1,8 +1,6 @@
 <script>
 	import Footer from "$lib/components/Footer.svelte";
-import Navbar from "$lib/components/Navbar.svelte";
-import Searchbar from "$lib/components/Searchbar.svelte";
-
+    import Navbar from "$lib/components/Navbar.svelte";
 </script>
 
 <div class="app">
@@ -22,5 +20,4 @@ import Searchbar from "$lib/components/Searchbar.svelte";
         justify-content: space-between;
         align-items: center;
     }
-    
 </style>

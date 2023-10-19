@@ -43,7 +43,7 @@
 
 <style lang="scss">
     form {
-        width: 270px;
+        width: 320px;
         font-family: 'DM Sans';
         display: flex;
         flex-direction: column;

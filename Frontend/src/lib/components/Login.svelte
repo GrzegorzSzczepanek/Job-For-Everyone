@@ -36,7 +36,7 @@
 <style lang="scss">
 
     form {
-        width: 230px;
+        width: 270px;
         font-family: 'DM Sans';
         display: flex;
         flex-direction: column;
