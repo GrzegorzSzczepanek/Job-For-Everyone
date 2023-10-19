@@ -8,7 +8,7 @@
     let confirmPassword = "test123";
 
     async function register() {
-        const registerData = await backend.post("127.0.0.1", "register", {
+        const registerData = await backend.post("register", {
             email: email,
             username: login,
             password: password,
@@ -47,7 +47,7 @@
             padding: 10px 0 5px 0;
         }
 
-        input[type="text"], input[type="password"], button[type="submit"] {
+        input[type="email"], input[type="text"], input[type="password"], button[type="submit"] {
             font-family: 'Montserrat';
             padding: 5px;
             border-radius: 5px;

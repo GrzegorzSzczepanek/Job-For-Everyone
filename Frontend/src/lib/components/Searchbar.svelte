@@ -1,23 +1,21 @@
 <script>
+	import { backend } from "$lib";
 	import Item from "./Item.svelte";
 
 
 let query = "";
-let dataReceived = [];
+let searchResult = [];
 
-async function sendQueri() {
-    let promise = await fetch("http://127.0.0.1:3000/search", {query: query});
-    dataReceived = await promise.json();
-    // console.log(dataReceived)
-    
+async function sendQuery() {
+    searchResult = await backend.get("search", { query: query });
 }
 
 </script>
 
 <input type="text" name="search" id="search" bind:value={query}>
-<button type="submit" on:click={sendQueri}>lupka</button>
+<button type="submit" on:click={sendQuery}>lupka</button>
 
-{#each dataReceived as paper}
+{#each searchResult as paper}
     <Item {...paper}/>
 {/each}
 

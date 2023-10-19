@@ -6,7 +6,7 @@
     let password = "";
 
     async function logIn() {
-        const registerData = await backend.post("127.0.0.1", "login", {
+        const registerData = await backend.post("login", {
             username: login,
             password: password
         });
@@ -20,7 +20,7 @@
     <label for="login">Login</label>
     <input type="text" name="login" id="login" bind:value={login}>
     <label for="password">password</label>
-    <input type="text" name="password" id="password" bind:value={password}>
+    <input type="password" name="password" id="password" bind:value={password}>
 
     <button type="submit" on:click={logIn}>Log in</button>
 </form>
