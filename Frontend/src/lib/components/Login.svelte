@@ -10,11 +10,11 @@
             username: username,
             password: password
         });
-        if(loginData.status == "OK") {
+        if(loginData.status === "OK") {
             cookies.set("authkey", loginData.authkey);
             cookies.set("loggedAs", username);
             goto("/");
-        } else if(loginData.status == "ERROR") {
+        } else if(loginData.status === "ERROR") {
             console.error(loginData.message);
         }
     }
@@ -37,7 +37,7 @@
 
     form {
         width: 270px;
-        font-family: 'DM Sans';
+        font-family: 'DM Sans', serif;
         display: flex;
         flex-direction: column;
         padding: 30px;
@@ -47,7 +47,7 @@
 
         h1 {
             color: #000;
-            font-family: 'DM Sans';
+            font-family: 'DM Sans', serif;
             font-size: 36px;
             margin: 0;
             margin-bottom: 15px;
@@ -60,7 +60,7 @@
         }
 
         input[type="text"], input[type="password"], button[type="submit"] {
-            font-family: 'DM Sans';
+            font-family: 'DM Sans', serif;
             padding: 5px;
             border-radius: 5px;
             border: 1px solid #333;
@@ -68,10 +68,9 @@
         }
 
         button[type="submit"] {
-            font-family: 'Raleway';
+            font-family: 'Raleway', serif;
             margin-top: 25px;
-            border: none;
-            background: #fff200;
+          background: #fff200;
             cursor: pointer;
             font-size: 1em;
             background: linear-gradient(#303133,#303133) padding-box,linear-gradient(90deg,#ed6e61,#6359e1) border-box;
