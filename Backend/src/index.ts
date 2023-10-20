@@ -35,6 +35,8 @@ insert into publications (title, authors, categories, number_of_pages, file) val
 fetch backend/search?query=xyz&page=1
 */
 
+// TODO: make sure user passed all and correct fields to endpoints and they are not empty
+
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -102,10 +104,10 @@ app.post('/login', async (req, res) => {
 
 app.post('/register', async (req, res) => {
     let body = req.body;
-    let username = body.username;
-    let password = body.password;
-    let confirm_password = body.confirm_password;
-    let email = body.email;
+    let username: string = body.username;
+    let password: string = body.password;
+    let confirm_password: string = body.confirm_password;
+    let email: string = body.email;
 
     if (username == "" || password == "" || email == "") {
         return res.json({ status: "ERROR", message: "Fields must not be empty" });
@@ -150,7 +152,7 @@ app.post('/register', async (req, res) => {
 });
 
 app.get('/publication', async (req, res) => {
-    let publication_id = req.query.id;
+    let publication_id: int = req.query.id;
     if (publication_id === undefined) {
         return res.json({ status: "ERROR", message: "Publication id not provided" });
     }
@@ -163,23 +165,23 @@ app.get('/publication', async (req, res) => {
 });
 
 app.get('/search', async (req, res) => {
-    let query = req.query.query;
+    let query: string = req.query.query;
     if (query !== undefined) {
         // TODO: handle query
     }
-    let author = req.query.author;
+    let author: string = req.query.author;
     if (author !== undefined) {
         // TODO: handle author filter
     }
-    let category = req.query.category;
+    let category: string = req.query.category;
     if (category !== undefined) {
         // TODO: handle category filter
     }
-    let count = req.query.count;
+    let count: string = req.query.count;
     if (count !== undefined) {
         // TODO: handle count filter
     }
-    let page = req.query.page;
+    let page: string = req.query.page;
     if (page !== undefined) {
         // TODO: handle page filter
     }
@@ -190,7 +192,7 @@ app.get('/search', async (req, res) => {
 });
 
 app.get('/user', (req, res) => {
-    let username = req.query.username;
+    let username: string = req.query.username;
     if (username === undefined) {
         return res.json({ status: "ERROR", message: "Username not provided" });
     }
@@ -204,6 +206,21 @@ app.get('/user', (req, res) => {
         academic_fields: ["dupa1", "dupa2"],
         publications: [{ title: "Title", publish_date: "pubdate", citations: 10, reviews: 11 }]
     });
+});
+
+app.post('/post-comment', async (req, res) => {
+    let body = req.body;
+    let username: string = body.username;
+    let comment: string = body.comment;
+    let review: bool = body.review;
+    console.log(body, username, comment, review);
+    if (username === undefined || comment === undefined || review === undefined) {
+        return res.json({ status: "ERROR", message: "Fields must not be empty" });
+    }
+    // TODO: check if user exists
+    // TODO: check if comment is empty
+    // TODO: check authentication
+    res.json({ status: "OK" });
 });
 
 const PORT = process.env.PORT || 3000;
