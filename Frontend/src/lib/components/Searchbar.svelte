@@ -14,7 +14,7 @@
 </script>
 
 <div class="searchbar">
-    <input type="text" name="search" id="search" bind:value={query}>
+    <input type="text" name="search" id="search" bind:value={query} placeholder="Wyszukaj publikacje">
     <button type="submit" on:click={sendQuery}><Fa icon={faMagnifyingGlass} color="#222" /></button>
 </div>
 

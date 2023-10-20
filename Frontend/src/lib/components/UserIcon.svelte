@@ -6,7 +6,7 @@ let profile_image = "https://imgs.search.brave.com/Cx1UU2_Kf_zCkw3prnIJ9TFp24dA9
 let dataReceived = []
 
 async function gotoUser() {
-    backend.get("user", { username: "user1" });
+    // backend.get("user", { username: "user1" });
     goto('/user-profile')
 }
     
