@@ -45,7 +45,7 @@ const icon_style = {
         </div>
         <div id="basic_info">
             <p id="name">{username}</p>
-            <p id="date">{joined}</p>
+            <p id="date">Na platoformie od {joined}</p>
             <p id="degree">{user_degree}</p>
         </div>
         <div id="uni">
@@ -106,6 +106,16 @@ header {
     background: transparent;
 }
 
+@media only screen and (max-width: 880px) {
+    header {
+        display: grid;
+        grid-template-columns: .8fr .5fr 1.1fr 0.15fr 0.1fr;    
+        color: white;
+        margin: 50px;
+        grid-gap: 10px;
+        background: transparent;
+        }
+}
 section {
     height: 100%;
     width: 100%;
@@ -116,6 +126,11 @@ section {
 -moz-box-shadow: 0px 7px 6px 0px rgba(175, 175, 175, 1);
 box-shadow: 0px 7px 6px 0px rgba(175, 175, 175, 1);
 border: #bb4ab5 solid 3px;
+transition: linear 0.2s;
+}
+section:hover {
+    background-color: #303030;
+
 }
 #profile_info {
     display: grid;
@@ -136,6 +151,7 @@ border: #bb4ab5 solid 3px;
     border-radius: 100%;
     grid-column: 1;
     grid-row: 1;
+    border: #bb4ab5 2px solid;
 }
 
 #basic_info {
@@ -153,7 +169,7 @@ border: #bb4ab5 solid 3px;
   justify-content: center;
   align-items: center;
     grid-column: span 2;
-    border-top: #bb4ab5 solid 3px;
+    border-top: #bb4ab5 solid 2px;
 }
 #stats {
     width: 100%;

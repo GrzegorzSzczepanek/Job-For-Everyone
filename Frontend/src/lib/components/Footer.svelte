@@ -47,7 +47,18 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
         display: flex;
         justify-content: space-between;
         font-family: 'Raleway';
+        margin-top: auto;
     }
+    @media only screen and (max-width: 880px) {
+        footer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: auto;
+        }
+    }
+
     a {
         padding: 10px;
         color: rgb(128, 128, 128);
@@ -59,7 +70,16 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
     a:hover {
         color: white;
     }
-
+    @media only screen and (max-width: 664px) {
+        footer {
+            font-size: 0.9em;
+        }
+        a {
+            padding: 0;
+            margin: 10px;
+            
+        }
+    }
     span {
         display: flex;
     }
