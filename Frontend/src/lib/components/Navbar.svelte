@@ -2,12 +2,12 @@
 	import Searchbar from "./Searchbar.svelte";
     import { cookies } from "$lib";
 	import { invalidateAll, goto } from "$app/navigation";
-    import { onMount } from "svelte";
+    import { browser } from "$app/environment";
 
     let isLogged = undefined;
-    onMount(() => {
+    if (browser) {
         isLogged = document.cookie.includes('loggedAs');
-    });
+    }
 
     function logout() {
         console.log("Logging out: " + cookies.get("loggedAs"));

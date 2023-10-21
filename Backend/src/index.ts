@@ -104,10 +104,10 @@ app.post('/login', async (req, res) => {
 
 app.post('/register', async (req, res) => {
     let body = req.body;
-    let username: string = body.username;
-    let password: string = body.password;
-    let confirm_password: string = body.confirm_password;
-    let email: string = body.email;
+    let username = body.username;
+    let password = body.password;
+    let confirm_password = body.confirm_password;
+    let email = body.email;
 
     if (username == "" || password == "" || email == "") {
         return res.json({ status: "ERROR", message: "Fields must not be empty" });
@@ -152,7 +152,7 @@ app.post('/register', async (req, res) => {
 });
 
 app.get('/publication', async (req, res) => {
-    let publication_id: int = req.query.id;
+    let publication_id = req.query.id;
     if (publication_id === undefined) {
         return res.json({ status: "ERROR", message: "Publication id not provided" });
     }
@@ -165,23 +165,23 @@ app.get('/publication', async (req, res) => {
 });
 
 app.get('/search', async (req, res) => {
-    let query: string = req.query.query;
+    let query = req.query.query;
     if (query !== undefined) {
         // TODO: handle query
     }
-    let author: string = req.query.author;
+    let author = req.query.author;
     if (author !== undefined) {
         // TODO: handle author filter
     }
-    let category: string = req.query.category;
+    let category = req.query.category;
     if (category !== undefined) {
         // TODO: handle category filter
     }
-    let count: string = req.query.count;
+    let count = req.query.count;
     if (count !== undefined) {
         // TODO: handle count filter
     }
-    let page: string = req.query.page;
+    let page = req.query.page;
     if (page !== undefined) {
         // TODO: handle page filter
     }
@@ -192,7 +192,7 @@ app.get('/search', async (req, res) => {
 });
 
 app.get('/user', (req, res) => {
-    let username: string = req.query.username;
+    let username = req.query.username;
     if (username === undefined) {
         return res.json({ status: "ERROR", message: "Username not provided" });
     }
@@ -210,9 +210,9 @@ app.get('/user', (req, res) => {
 
 app.post('/post-comment', async (req, res) => {
     let body = req.body;
-    let username: string = body.username;
-    let comment: string = body.comment;
-    let review: bool = body.review;
+    let username = body.username;
+    let comment = body.comment;
+    let review = body.review;
     console.log(body, username, comment, review);
     if (username === undefined || comment === undefined || review === undefined) {
         return res.json({ status: "ERROR", message: "Fields must not be empty" });
