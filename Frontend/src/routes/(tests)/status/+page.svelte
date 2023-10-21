@@ -1,7 +1,11 @@
 <script>
-    import { getData } from '$lib';
+    import { onMount } from 'svelte';
+    import { backend } from '$lib';
 
-    const promise = getData("192.168.105.233", "ping");
+    let promise = undefined;
+    onMount(() => {
+        promise = backend.get("ping");
+    });
 </script>
 
 {#await promise}

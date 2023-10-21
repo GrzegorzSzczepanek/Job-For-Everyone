@@ -10,7 +10,6 @@
     async function sendQuery() {
         searchResult = await backend.get("search", { query: query });
     }
-
 </script>
 
 <div class="searchbar">
