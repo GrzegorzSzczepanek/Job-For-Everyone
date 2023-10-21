@@ -18,15 +18,14 @@
             console.error(loginData.message);
         }
     }
-
 </script>
 
 <form>
     <h1>Logowanie</h1>
     <label for="login">Login</label>
-    <input type="text" name="login" id="login" bind:value={username}>
+    <input type="text" name="login" id="login" placeholder="Nazwa użytkownika" bind:value={username}>
     <label for="password">Hasło</label>
-    <input type="password" name="password" id="password" bind:value={password}>
+    <input type="password" name="password" id="password" placeholder="Hasło" bind:value={password}>
 
     <button type="submit" on:click={login}>Zaloguj</button>
 
@@ -34,9 +33,8 @@
 </form>
 
 <style lang="scss">
-
     form {
-        width: 270px;
+        width: 320px;
         font-family: 'DM Sans', serif;
         display: flex;
         flex-direction: column;
@@ -61,7 +59,7 @@
 
         input[type="text"], input[type="password"], button[type="submit"] {
             font-family: 'DM Sans', serif;
-            padding: 5px;
+            padding: 10px;
             border-radius: 5px;
             border: 1px solid #333;
             font-weight: 300;
@@ -70,13 +68,14 @@
         button[type="submit"] {
             font-family: 'Raleway', serif;
             margin-top: 25px;
-          background: #fff200;
+            background: #fff200;
             cursor: pointer;
             font-size: 1em;
             background: linear-gradient(#303133,#303133) padding-box,linear-gradient(90deg,#ed6e61,#6359e1) border-box;
             border: 4px solid transparent;
             color: white;
             font-weight: 600;
+            padding: 10px;
         }
     }
 

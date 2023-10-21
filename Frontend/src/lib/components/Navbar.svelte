@@ -1,22 +1,21 @@
 <script>
 	import Searchbar from "./Searchbar.svelte";
     import { cookies } from "$lib";
-	import { onMount } from "svelte";
-	import { invalidateAll } from "$app/navigation";
+	import { invalidateAll, goto } from "$app/navigation";
+    import { browser } from "$app/environment";
 
-    let loggedAs = undefined;
-    let loggedIn = false;
-
-    onMount(() => {
-        loggedAs = cookies.get("loggedAs");
-        loggedIn = loggedAs != undefined;
-    });
+    let isLogged = undefined;
+    if (browser) {
+        isLogged = document.cookie.includes('loggedAs');
+    }
 
     function logout() {
-        console.log("Logging out: " + cookies.get("loggedAs") + "(" + loggedAs + ")");
+        console.log("Logging out: " + cookies.get("loggedAs"));
         cookies.delete("loggedAs");
+        cookies.delete("authkey");
         console.log("Logging out (end): " + cookies.get("loggedAs"));
         invalidateAll();
+        isLogged = false;
     }
 </script>
 
@@ -24,11 +23,11 @@
     <img src="#" alt="Logo">
     <Searchbar />
     <div class="logging">
-        {#if loggedIn}
-        <button type="button" on:click={logout}>Wyloguj</button>
+        {#if isLogged}
+            <button type="button" on:click={logout}>Wyloguj</button>
         {:else}
-        <button type="button">Zarejestruj</button>
-        <button type="button">Zaloguj</button>
+            <button type="button" on:click={() => { goto("/register"); }}>Zarejestruj</button>
+            <button type="button" on:click={() => { goto("/login"); }}>Zaloguj</button>
         {/if}
     </div>
 </nav>

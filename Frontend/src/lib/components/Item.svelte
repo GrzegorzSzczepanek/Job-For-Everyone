@@ -2,17 +2,16 @@
 	export let title;
     export let authors;
     export let categories;
-    export let school;
     export let number_of_pages;
-    
+    export let file;
 </script>
 
 <article>
     <p>{title}</p>
     <p>{authors}</p>
     <p>{categories}</p>
-    <p>{school}</p>
     <p>{number_of_pages}</p>
+    <p>{file}</p>
 </article>
 
 <style>

@@ -9,18 +9,18 @@
 </script>
 
 <tr id="author_info">
-    
+
     <a href="xd.pl">
     <td id="publication_info">
         <p id="tit">{title}</p>
-    </td>  
+    </td>
     </a>
-    <td> 
+    <td>
     <p id="authors">{author} {coauthors.length > 0 ? ", oraz współautorzy: " + coauthors.join(", ") : "" }</p>
     </td>
     <td>
         <p id="uni">{user_university}</p>
-    </td>    
+    </td>
 
 
     <td>Zacytowano: {amount_of_citations}</td>
@@ -50,6 +50,6 @@
         display: flex;
     }
     #uni {
-    
+
     }
 </style>

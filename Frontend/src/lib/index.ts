@@ -38,6 +38,6 @@ export const cookies = {
         document.cookie = `${key}=${value};`;
     },
     delete: (key: string) => {
-        document.cookie = `${key}=;`;
+        document.cookie = `${key}=;expires=Thu, 01 Jan 1970 00:00:00 GMT`;
     }
 }
