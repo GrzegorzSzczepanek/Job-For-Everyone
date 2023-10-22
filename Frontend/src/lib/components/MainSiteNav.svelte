@@ -1,12 +1,31 @@
 <script>
-	import UserIcon from "./UserIcon.svelte";
+    import UserIcon from "./UserIcon.svelte";
     import Fa from 'svelte-fa'
     import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
-	import NavMenu from "./NavMenu.svelte";
-
+    import NavMenu from "./NavMenu.svelte";
+  
     let username = "User Name"
-    
+    let showMenu = false;
+  
 
+function handleClick(event) {
+    event.stopPropagation();
+    showMenu = !showMenu;
+  }
+
+  function handleWindowClick() {
+    showMenu = false;
+  }
+
+  import { onMount } from 'svelte';
+
+  onMount(() => {
+    window.addEventListener('click', handleWindowClick);
+
+    return () => {
+      window.removeEventListener('click', handleWindowClick);
+    };
+  });
 </script>
 
 <nav>
@@ -15,10 +34,12 @@
         <div>
             <div id="name_and_icon">
                 <span id="username">{username}</span>
-                 <span id="arrow_icon" on:click={manageClicked()}>
+                 <span id="arrow_icon" on:click={handleClick}>
                     <Fa icon={faAngleLeft} size="0.8x" color="#dcd6d6"/>
                 </span>
-
+                {#if showMenu}
+                    <NavMenu />
+                {/if}
             </div>
             <!-- <button on:click={logout}>Wyloguj</button> -->
         </div>
