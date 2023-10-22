@@ -1,0 +1,58 @@
+<script>
+	import UserIcon from "./UserIcon.svelte";
+    import Fa from 'svelte-fa'
+    import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+
+    let user_profile_pic = "https://http.cat/404"
+    let username = "User Name"
+
+    function logout() {
+        alert("Wylogowano")
+        
+    }
+
+</script>
+
+<nav>
+    <img src="./logo.svg" alt="scholar hub" srcset="" id="logo">
+    <div id="img_and_logout">
+        <div>
+            <div>
+                <span id="username">{username}</span>
+                 <span id="arrow_icon">
+                    <Fa icon={faAngleLeft} size="0.8x"/>
+                </span>
+            </div>
+            <!-- <button on:click={logout}>Wyloguj</button> -->
+        </div>
+        <UserIcon />
+    </div>
+
+</nav>
+
+<style>
+    nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    #img_and_logout , #logo{
+        margin: 20px;
+        display: flex;
+    }
+    #arrow_icon {
+        display: inline-block;
+        font-size: 20px;
+        transition: ease-in-out .2s;
+        margin: 0 10px 0 5px;
+    }
+    #arrow_icon:hover {
+        transform: rotate(-90deg);
+    }
+    #username {
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

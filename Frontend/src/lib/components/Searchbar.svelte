@@ -26,6 +26,7 @@
     #searchbar {
         width: 65%;
         position: relative;
+
     }
     #searchbar #icon{
         position: absolute;
@@ -42,13 +43,18 @@
         border-radius: 30px;
         text-align: left;
         color: #f9f1ff;
-        font-weight: bold;
-        font-size: 25px;
+        font-size: 22px;
         padding: 10px;
         font-family: "DM Sans";
+        -webkit-box-shadow: 1px 9px 12px -8px rgba(22, 22, 22, 1);
+        -moz-box-shadow: 1px 9px 12px -8px rgba(22, 22, 22, 1);
+        box-shadow: 1px 9px 12px -8px rgba(22, 22, 22, 1);
     }
+    // input:focus {
+    //     border: none;
+    // }
     input::placeholder {
-        font-weight: 600;
+        font-weight: bold;
         font-size: 25px;
         color: #8f9a9c;
         display: flex;
