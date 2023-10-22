@@ -6,6 +6,31 @@ import PublicationOnProfile from "$lib/components/PublicationOnProfile.svelte";
 import UserIcon from "$lib/components/UserIcon.svelte";
 import PopularPapers from "$lib/components/PopularPapers.svelte";
 
+// Placeholders for now
+let popular_papers = [
+    {
+        title:"Language Models are Few-Shot Learners",
+        authors: ["Tom B. Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan"]
+    },
+    {
+        title:"Language Models are Few-Shot Learners",
+        authors: ["Tom B. Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan"]
+    },
+    {
+        title:"Language Models are Few-Shot Learners",
+        authors: ["Tom B. Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan"]
+    },
+    {
+        title:"Language Models are Few-Shot Learners",
+        authors: ["Tom B. Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan"]
+    }
+]   
+let index = 0;
+
+function iterate_index() {
+    index += 1;
+    return index;
+}
 
 </script>
 
@@ -18,7 +43,17 @@ import PopularPapers from "$lib/components/PopularPapers.svelte";
         <h2>
             Publikacje zyskujące popularność
         </h2>
-        <PopularPapers />
+        <ol>
+            {#each popular_papers as paper}
+               <li>
+                <p id="index">{iterate_index()}. </p>
+                <PopularPapers {...paper}/>
+                </li>
+            {/each}
+        </ol>
+        
+
+        <!-- <PopularPapers /> -->
     </section>
 
     <Footer />
@@ -26,7 +61,7 @@ import PopularPapers from "$lib/components/PopularPapers.svelte";
 
 <style lang="scss">
     .app {
-        width: 100vw;
+        max-width: 100%;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
@@ -39,5 +74,18 @@ import PopularPapers from "$lib/components/PopularPapers.svelte";
         font-size: 26px;
         text-align: center;
         margin-top: 100px;
+    }
+    ol{
+        list-style: none;
+    }
+    li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #index {
+        margin-right: 20px;
+        font-size: 20px;
+        color: #dcd6d6;
     }
 </style>

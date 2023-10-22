@@ -2,9 +2,8 @@
 	import Fa from 'svelte-fa';
     import { faBook } from '@fortawesome/free-solid-svg-icons'
 
-    let title = "Language Models are Few-Shot Learners"
-    let authors = ["Tom B. Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan"]
-
+    export let title;
+    export let authors;
 
 </script>
 

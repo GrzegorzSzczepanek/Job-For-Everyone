@@ -17,10 +17,10 @@
     <img src="./logo.svg" alt="scholar hub" srcset="" id="logo">
     <div id="img_and_logout">
         <div>
-            <div>
+            <div id="name_and_icon">
                 <span id="username">{username}</span>
                  <span id="arrow_icon">
-                    <Fa icon={faAngleLeft} size="0.8x"/>
+                    <Fa icon={faAngleLeft} size="0.8x" color="#dcd6d6"/>
                 </span>
             </div>
             <!-- <button on:click={logout}>Wyloguj</button> -->
@@ -38,6 +38,15 @@
     }
     #img_and_logout , #logo{
         margin: 20px;
+    }
+    #img_and_logout {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: #dcd6d6;
+    }
+    #name_and_icon {
         display: flex;
     }
     #arrow_icon {
@@ -46,7 +55,7 @@
         transition: ease-in-out .2s;
         margin: 0 10px 0 5px;
     }
-    #arrow_icon:hover {
+    #arrow_icon:active {
         transform: rotate(-90deg);
     }
     #username {

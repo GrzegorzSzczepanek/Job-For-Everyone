@@ -8,6 +8,7 @@
     let searchResult = [];
     async function sendQuery() {
         searchResult = await backend.get("search", { query: query });
+        console.log(searchResult)
     }
 </script>
 
