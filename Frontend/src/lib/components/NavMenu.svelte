@@ -1,7 +1,9 @@
 <script>
 
 import { goto } from '$app/navigation';
-    
+
+let menu = document.getElementById("menu");
+export {menu}
 
 </script>
 
@@ -17,8 +19,9 @@ import { goto } from '$app/navigation';
 
 #menu {
     list-style: none;
-    background: linear-gradient(#303133,#303133) padding-box,linear-gradient(90deg,#ed6e61,#6359e1) border-box;
-    border: 4px solid transparent;
+    /* background: linear-gradient(#303133,#303133) padding-box,linear-gradient(90deg,#ed6e61,#6359e1) border-box;
+    border: 4px solid transparent; */
+    background: transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,16 +33,20 @@ import { goto } from '$app/navigation';
 }
 .menu_element {
     background: linear-gradient(#303133,#303133) padding-box,linear-gradient(90deg,#ed6e61,#6359e1) border-box;
-    border-bottom: 2px dashed transparent;
+    border: 2px dashed transparent;
+    border-radius: 20px;
+    margin-top: 2px;
     width: 100%;
     height: 100%;
     color: #d8dcd6;
     font-size: 18px;
     font-weight: 600;
     transition: 0.2s ease-in-out;
+    padding: 2px;
 }
 .menu_element:hover {
     cursor: pointer;
-    color: #9c31c6;
+    color: #282727;
+    background: linear-gradient(#7c7e83,#939bac) padding-box,linear-gradient(90deg,#ed6e61,#6359e1) border-box;
 }
 </style>

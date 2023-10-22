@@ -35,7 +35,7 @@ function iterate_index() {
 </script>
 
 
-<div class="app">
+<div class="app" on:click{}>
     <MainSiteNav />
     <slot></slot>
 	<Searchbar />

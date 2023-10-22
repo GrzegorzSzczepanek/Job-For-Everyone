@@ -2,14 +2,10 @@
 	import UserIcon from "./UserIcon.svelte";
     import Fa from 'svelte-fa'
     import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+	import NavMenu from "./NavMenu.svelte";
 
-    let user_profile_pic = "https://http.cat/404"
     let username = "User Name"
-
-    function logout() {
-        alert("Wylogowano")
-        
-    }
+    
 
 </script>
 
@@ -19,9 +15,10 @@
         <div>
             <div id="name_and_icon">
                 <span id="username">{username}</span>
-                 <span id="arrow_icon">
+                 <span id="arrow_icon" on:click={manageClicked()}>
                     <Fa icon={faAngleLeft} size="0.8x" color="#dcd6d6"/>
                 </span>
+
             </div>
             <!-- <button on:click={logout}>Wyloguj</button> -->
         </div>
