@@ -161,6 +161,7 @@ app.get('/publication', async (req, res) => {
         return res.json({ status: "ERROR", message: "Publication not found" });
     }
     let publication = rows.rows[0];
+    publication["status"] = "OK";
     res.json(publication);
 });
 
@@ -187,7 +188,6 @@ app.get('/search', async (req, res) => {
     }
     let rows = await db.execute("SELECT * FROM publications");
     rows = rows.rows;
-
     res.json(rows);
 });
 
@@ -199,6 +199,7 @@ app.get('/user', (req, res) => {
     // TODO: check if the user exists in the DB
     // TODO: extract this info from the DB
     return res.json({
+        status: "OK",
         name: "Adam Mickiewicz",
         profile_picture: "https://http.cat/404",
         institution: "Institution",
@@ -213,7 +214,7 @@ app.post('/post-comment', async (req, res) => {
     let username = body.username;
     let comment = body.comment;
     let review = body.review;
-    console.log(body, username, comment, review);
+    // console.log(body, username, comment, review);
     if (username === undefined || comment === undefined || review === undefined) {
         return res.json({ status: "ERROR", message: "Fields must not be empty" });
     }
