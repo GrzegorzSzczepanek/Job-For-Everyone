@@ -8,15 +8,11 @@
 	import { backend, cookies } from "$lib";
 	import { browser } from "$app/environment";
   
-    let username = "User Name"
+    let username = "Niezalogowany"
     let showMenu = false;
 
     if(browser) {
-        backend.get("user", {
-            username: cookies.get("loggedAs")
-        }).then(userInfo => {
-            username = userInfo.username;
-        });
+        username = cookies.get("loggedAs")
     }
 
     function handleClick(event) {
