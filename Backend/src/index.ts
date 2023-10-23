@@ -166,6 +166,7 @@ app.get('/user', async (req, res) => {
     }
     rows = rows.rows[0];
     let user_obj = {
+        status: "OK",
         username: rows.username,
         name: rows.name,
         lastname: rows.lastname,
@@ -180,9 +181,23 @@ app.post('/post-comment', async (req, res) => {
     let body = req.body;
     let username = body.username;
     let comment = body.comment;
-    let review = body.review;
-    // console.log(body, username, comment, review);
-    if (username === undefined || comment === undefined || review === undefined) {
+    console.log(body, username, comment);
+    if (username === undefined || comment === undefined) {
+        return res.json({ status: "ERROR", message: "Fields must not be empty" });
+    }
+    // TODO: check if user exists
+    // TODO: check if comment is empty
+    // TODO: check authentication
+    res.json({ status: "OK" });
+});
+
+app.post('/post-reply', async (req, res) => {
+    let body = req.body;
+    let username = body.username;
+    let comment = body.comment;
+    let reply_to = body.reply_to;
+    console.log(body, username, comment);
+    if (username === undefined || comment === undefined || reply_to === undefined) {
         return res.json({ status: "ERROR", message: "Fields must not be empty" });
     }
     // TODO: check if user exists
