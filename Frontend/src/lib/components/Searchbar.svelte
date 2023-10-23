@@ -12,12 +12,12 @@
     }
 </script>
 
-<div id="searchbar">
+<form id="searchbar">
     <input type="text" name="search" id="search" bind:value={query} placeholder="Wyszukaj publikacje... ">
-    <span id="icon" on:click={sendQuery}>
-        <Fa icon={faMagnifyingGlass} on:click={sendQuery} size="1.2x" color="#8f9a9c"/>
-    </span>
-</div>
+    <button type="submit" id="icon" on:click={sendQuery}>
+        <Fa icon={faMagnifyingGlass} on:click={sendQuery} size="1.4x" color="#8f9a9c"/>
+    </button>
+</form>
 
 {#each searchResult as paper}
     <Item {...paper}/>
