@@ -155,22 +155,25 @@ app.get('/search', async (req, res) => {
     res.json(rows);
 });
 
-app.get('/user', (req, res) => {
+app.get('/user', async (req, res) => {
     let username = req.query.username;
     if (username === undefined) {
         return res.json({ status: "ERROR", message: "Username not provided" });
     }
-    // TODO: check if the user exists in the DB
-    // TODO: extract this info from the DB
-    return res.json({
-        status: "OK",
-        name: "Adam Mickiewicz",
-        profile_picture: "https://http.cat/404",
-        institution: "Institution",
-        bio: "bio lol test",
-        academic_fields: ["dupa1", "dupa2"],
-        publications: [{ title: "Title", publish_date: "pubdate", citations: 10, reviews: 11 }]
-    });
+    let rows = await db.execute({sql: "SELECT * FROM users WHERE username = :username", args: { username: username }});
+    if (rows.rows.length === 0) {
+        return res.json({ status: "ERROR", message: "Username not found" });
+    }
+    rows = rows.rows[0];
+    let user_obj = {
+        username: rows.username,
+        name: rows.name,
+        lastname: rows.lastname,
+        photo: rows.photo,
+        description: rows.description,
+        education: rows.education
+    };
+    return res.json(user_obj);
 });
 
 app.post('/post-comment', async (req, res) => {
