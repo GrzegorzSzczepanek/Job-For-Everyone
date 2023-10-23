@@ -31,7 +31,10 @@
 </script>
 
 <nav>
-    <img src="/src/lib/images/logo.svg" alt="scholar hub" srcset="" id="logo" on:click={() => goto("/")}>
+    <div class="logo-container">
+        <img src="/src/lib/images/logo.svg" alt="logo" srcset="" id="logo" on:click={() => goto("/")}>
+        <span>Scholar Hub</span>
+    </div>
     <div id="img_and_logout">
         <div>
             <div id="name_and_icon">
@@ -59,9 +62,21 @@
         box-shadow: 0 0 10px rgba(30, 30, 20);
         padding: 5px 10px;
 
-        #logo {
-            width: 40px;
-            cursor: pointer;
+        .logo-container {
+            display: flex;
+            align-items: center;
+
+            #logo {
+                width: 40px;
+                cursor: pointer;
+            }
+
+            span {
+                color: #C4C4C4;
+                font-size: 18px;
+                font-weight: 600;
+                margin-left: 10px;
+            }
         }
         
         #img_and_logout {
