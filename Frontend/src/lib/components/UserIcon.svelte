@@ -15,18 +15,12 @@ async function gotoUser() {
 <img src="{profile_image}" alt="your profile" on:click={gotoUser}>
 
 <style>
-/* div {
-    width: 50px;
-    height: 50px;
-    box-shadow: 2px 2px 2px 2px;
-    border-radius: 100%;
-} */
 
 img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 100%;
-    box-shadow: 2px 2px 2px 2px;
+    cursor: pointer;
 }
 
 </style>

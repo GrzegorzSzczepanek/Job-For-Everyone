@@ -6,35 +6,34 @@
   
     let username = "User Name"
     let showMenu = false;
-  
 
-function handleClick(event) {
-    event.stopPropagation();
-    showMenu = !showMenu;
-  }
+    function handleClick(event) {
+        event.stopPropagation();
+        showMenu = !showMenu;
+    }
 
-  function handleWindowClick() {
-    showMenu = false;
-  }
+    function handleWindowClick() {
+        showMenu = false;
+    }
 
-  import { onMount } from 'svelte';
+    import { onMount } from 'svelte';
 
-  onMount(() => {
-    window.addEventListener('click', handleWindowClick);
+    onMount(() => {
+        window.addEventListener('click', handleWindowClick);
 
-    return () => {
-      window.removeEventListener('click', handleWindowClick);
-    };
-  });
+        return () => {
+            window.removeEventListener('click', handleWindowClick);
+        };
+    });
 </script>
 
 <nav>
-    <img src="./logo.svg" alt="scholar hub" srcset="" id="logo">
+    <img src="/src/lib/images/logo.svg" alt="scholar hub" srcset="" id="logo">
     <div id="img_and_logout">
         <div>
             <div id="name_and_icon">
                 <span id="username">{username}</span>
-                 <span id="arrow_icon" on:click={handleClick}>
+                <span id="arrow_icon" on:click={handleClick}>
                     <Fa icon={faAngleLeft} size="0.8x" color="#dcd6d6"/>
                 </span>
                 {#if showMenu}
@@ -48,38 +47,47 @@ function handleClick(event) {
 
 </nav>
 
-<style>
+<style lang="scss">
     nav {
         width: 100%;
         display: flex;
         justify-content: space-between;
-    }
-    #img_and_logout , #logo{
-        margin: 20px;
-    }
-    #img_and_logout {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        color: #dcd6d6;
-    }
-    #name_and_icon {
-        display: flex;
-    }
-    #arrow_icon {
-        display: inline-block;
-        font-size: 20px;
-        transition: ease-in-out .2s;
-        margin: 0 10px 0 5px;
-    }
-    #arrow_icon:active {
-        transform: rotate(-90deg);
-    }
-    #username {
-        font-size: 18px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        background: #333;
+        box-shadow: 0 0 10px rgba(30, 30, 20);
+        padding: 5px 10px;
+
+        #logo {
+            width: 40px;
+        }
+        
+        #img_and_logout {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            color: #dcd6d6;
+
+            #name_and_icon {
+                display: flex;
+
+                #username {
+                    font-size: 18px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                #arrow_icon {
+                    display: inline-block;
+                    font-size: 20px;
+                    transition: ease-in-out .2s;
+                    margin: 0 10px 0 5px;
+                }
+                
+                &:active {
+                    transform: rotate(-90deg);
+                }
+            }
+        }
     }
 </style>
