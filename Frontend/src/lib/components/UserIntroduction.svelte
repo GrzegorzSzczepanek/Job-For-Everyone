@@ -1,9 +1,9 @@
 <script>
 import { backend } from "$lib";
-	import { onMount } from "svelte";
-    import { faFlag, faGlobe } from '@fortawesome/free-solid-svg-icons'
+import { onMount } from "svelte";
+import { faFlag, faGlobe } from '@fortawesome/free-solid-svg-icons'
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
-	import Fa from "svelte-fa";
+import Fa from "svelte-fa";
 
 let data;
 let username = "Ferdynand Kiepski";

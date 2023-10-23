@@ -18,10 +18,13 @@ export {menu}
 <style>
 
 #menu {
+    position: absolute;
+    top: 5px;
+    right: 65px;
     list-style: none;
-    /* background: linear-gradient(#303133,#303133) padding-box,linear-gradient(90deg,#ed6e61,#6359e1) border-box;
-    border: 4px solid transparent; */
-    background: transparent;
+    background: linear-gradient(#303133,#303133) padding-box,linear-gradient(90deg,#ed6e61,#6359e1) border-box;
+    border: 2px solid transparent;
+    /* background: transparent; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,10 +32,9 @@ export {menu}
     text-align: center;
     border-radius: 20px;
     overflow: hidden;
-    padding: 10px;
+    padding: 30px;
 }
 .menu_element {
-    background: linear-gradient(#303133,#303133) padding-box,linear-gradient(90deg,#ed6e61,#6359e1) border-box;
     border: 2px dashed transparent;
     border-radius: 20px;
     margin-top: 2px;
@@ -42,7 +44,6 @@ export {menu}
     font-size: 18px;
     font-weight: 600;
     transition: 0.2s ease-in-out;
-    padding: 2px;
 }
 .menu_element:hover {
     cursor: pointer;
