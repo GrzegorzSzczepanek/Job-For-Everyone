@@ -2,8 +2,12 @@
 	import Fa from 'svelte-fa';
     import { faBook } from '@fortawesome/free-solid-svg-icons'
 
+    export let id;
     export let title;
     export let authors;
+    export let file;
+    // export let categories;
+    // export let number_of_pages;
 
 </script>
 
@@ -14,7 +18,8 @@
         </div>
         <div>
             <h3>{title}</h3>
-            <p>Author(s): {authors.join(", ")}</p>
+            <!-- <p>Author(s): {authors.join(", ")}</p> -->
+            <p>Autor:</p>
 
         </div>
     </article>

@@ -1,18 +1,21 @@
 <script>
-	import PopularPapers from "$lib/components/PopularPapers.svelte";
+	import Paper from "$lib/components/Paper.svelte";
 	import Searchbar from "$lib/components/Searchbar.svelte";
 
 	// Placeholders for now
 	let popular_papers = [
 		{
+			id: 1,
 			title:"Language Models are Few-Shot Learners",
 			authors: ["Tom B. Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan"]
 		},
 		{
+			id: 2,
 			title:"Language Models are Few-Shot Learners",
 			authors: ["Tom B. Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan"]
 		},
 		{
+			id: 3,
 			title:"Language Models are Few-Shot Learners",
 			authors: ["Tom B. Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan"]
 		}
@@ -38,13 +41,10 @@
 		{#each popular_papers as paper}
 		   <li>
 			<p id="index">{iterate_index()}. </p>
-			<PopularPapers {...paper}/>
+			<Paper {...paper}/>
 			</li>
 		{/each}
 	</ol>
-	
-
-	<!-- <PopularPapers /> -->
 </section>
 
 <style>

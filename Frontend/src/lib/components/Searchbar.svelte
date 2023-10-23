@@ -1,8 +1,8 @@
 <script>
 	import { backend } from "$lib";
-	import Item from "./Item.svelte";
     import Fa from 'svelte-fa'
     import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+	import PopularPapers from "./Paper.svelte";
 
     let query = "";
     let searchResult = [];
@@ -13,14 +13,14 @@
 </script>
 
 <form id="searchbar">
-    <input type="text" name="search" id="search" bind:value={query} placeholder="Wyszukaj publikacje... ">
+    <input type="text" name="search" id="search" bind:value={query} placeholder="Wyszukaj publikacje...">
     <button type="submit" id="icon" on:click={sendQuery}>
         <Fa icon={faMagnifyingGlass} on:click={sendQuery} size="1.4x" color="#8f9a9c"/>
     </button>
 </form>
 
 {#each searchResult as paper}
-    <Item {...paper}/>
+    <PopularPapers {...paper}/>
 {/each}
 
 <style lang="scss">
@@ -39,12 +39,14 @@
             font-size: 18px;
             padding: 10px 15px;
             font-family: "DM Sans";
-            -webkit-box-shadow: 1px 9px 12px -8px rgba(22, 22, 22, 1);
-            -moz-box-shadow: 1px 9px 12px -8px rgba(22, 22, 22, 1);
-            box-shadow: 1px 9px 12px -8px rgba(22, 22, 22, 1);
+            box-shadow: none;
+            transition: box-shadow 0.3s;
 
             &:focus {
                 outline: none;
+                -webkit-box-shadow: 1px 9px 15px -5px rgba(25, 25, 25, 1);
+                -moz-box-shadow: 1px 9px 15px -5px rgba(25, 25, 25, 1);
+                box-shadow: 1px 9px 15px -5px rgba(25, 25, 25, 1);
             }
         }
 

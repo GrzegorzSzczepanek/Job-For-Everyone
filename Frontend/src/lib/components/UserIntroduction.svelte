@@ -122,9 +122,6 @@ section {
     overflow: hidden;
     border-radius: 15px;
     background-color: #222;
-    -webkit-box-shadow: 0px 7px 6px 0px rgba(175, 175, 175, 1);
-    -moz-box-shadow: 0px 7px 6px 0px rgba(175, 175, 175, 1);
-    box-shadow: 0px 7px 6px 0px rgba(175, 175, 175, 1);
     border: #bb4ab5 solid 3px;
     transition: linear 0.2s;
 }

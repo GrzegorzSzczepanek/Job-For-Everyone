@@ -1,5 +1,4 @@
 <script>
-	import Footer from "$lib/components/Footer.svelte";
 	import PublicationOnProfile from "$lib/components/PublicationOnProfile.svelte";
 	import UserIntroduction from "$lib/components/UserIntroduction.svelte";
 
@@ -32,13 +31,8 @@
 	
 </section>
 
-
-
-<Footer />
-
 <style>
 	section {
-		width: 100vw;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;

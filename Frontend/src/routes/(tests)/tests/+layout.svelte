@@ -4,7 +4,7 @@
 import PublicationOnProfile from "$lib/components/PublicationOnProfile.svelte";
 	import Searchbar from "$lib/components/Searchbar.svelte";
 import UserIcon from "$lib/components/UserIcon.svelte";
-import PopularPapers from "$lib/components/PopularPapers.svelte";
+import PopularPapers from "$lib/components/Paper.svelte";
 
 // Placeholders for now
 let popular_papers = [

@@ -3,9 +3,21 @@
     import Fa from 'svelte-fa'
     import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
     import NavMenu from "./NavMenu.svelte";
+    import { onMount } from 'svelte';
+    import { goto } from "$app/navigation";
+	import { backend, cookies } from "$lib";
+	import { browser } from "$app/environment";
   
     let username = "User Name"
     let showMenu = false;
+
+    if(browser) {
+        backend.get("user", {
+            username: cookies.get("loggedAs")
+        }).then(userInfo => {
+            username = userInfo.username;
+        });
+    }
 
     function handleClick(event) {
         event.stopPropagation();
@@ -16,19 +28,14 @@
         showMenu = false;
     }
 
-    import { onMount } from 'svelte';
-
     onMount(() => {
         window.addEventListener('click', handleWindowClick);
-
-        return () => {
-            window.removeEventListener('click', handleWindowClick);
-        };
+        return () => window.removeEventListener('click', handleWindowClick);
     });
 </script>
 
 <nav>
-    <img src="/src/lib/images/logo.svg" alt="scholar hub" srcset="" id="logo">
+    <img src="/src/lib/images/logo.svg" alt="scholar hub" srcset="" id="logo" on:click={() => goto("/")}>
     <div id="img_and_logout">
         <div>
             <div id="name_and_icon">
@@ -58,6 +65,7 @@
 
         #logo {
             width: 40px;
+            cursor: pointer;
         }
         
         #img_and_logout {

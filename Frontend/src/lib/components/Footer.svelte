@@ -6,19 +6,19 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 <footer>
     <span>
-        <a href="wp.pl">
+        <a href="/">
             <Fa icon={faHome}/> Główna
         </a>
-        <a href="github.com">
+        <a href="https://github.com/Foxyg3n/BestHacksTest" target="_blank">
             <Fa icon={faGithub}/> GitHub
         </a>
-        <a href="wp.pl">
+        <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank">
             <Fa icon={faLinkedin}/> LinkedIn
         </a>
-        <a href="wp.pl">
+        <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank">
             <Fa icon={faEnvelope}/> Napisz do nas
         </a>
-        <a href="wp.pl">
+        <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank">
             <Fa icon={faCodeBranch}/> v0.0.1
         </a>
 
@@ -43,15 +43,8 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
         background: linear-gradient(#303133,#303133) padding-box,linear-gradient(90deg,#ed6e61,#6359e1) border-box;
         border-top: 4px solid transparent;
     }
-    @media only screen and (max-width: 880px) {
-        footer {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: auto;
-        }
-    }
+    
+
     a {
         padding: 10px;
         color: rgb(196, 196, 196);
@@ -64,16 +57,6 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
     a:hover {
         color: white;
     }
-    @media only screen and (max-width: 664px) {
-        footer {
-            font-size: 0.9em;
-        }
-        a {
-            padding: 0;
-            margin: 10px;
-
-        }
-    }
     span {
         display: flex;
         font-weight: 600;
@@ -84,5 +67,25 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
         align-items: center;
         margin: 0px 30px 0px 0px;
         padding: 0;
+    }
+    
+    @media only screen and (max-width: 664px) {
+        footer {
+            font-size: 0.9em;
+        }
+        a {
+            padding: 0;
+            margin: 10px;
+
+        }
+    }
+    @media only screen and (max-width: 880px) {
+        footer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: auto;
+        }
     }
 </style>
