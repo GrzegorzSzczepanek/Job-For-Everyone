@@ -2,6 +2,18 @@
     box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #222;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ed6e61, #6359e1);
+}
+
 body {
     margin: 0;
     font-family: 'DM Sans';
