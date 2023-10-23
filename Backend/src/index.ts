@@ -133,7 +133,9 @@ app.get('/search', async (req, res) => {
     if (query === undefined) {
         return res.json({ status: "ERROR", message: "Query string not provided" })
     }
-    // TODO: handle query
+    // TODO: fuzzy matching
+    let sql = "SELECT * FROM publications WHERE title LIKE '%' || :query || '%' OR short_desc LIKE '%' || :query || '%'";
+    let args = { query: query };
     let author = req.query.author;
     if (author !== undefined) {
         // TODO: handle author filter
@@ -150,7 +152,7 @@ app.get('/search', async (req, res) => {
     if (page !== undefined) {
         // TODO: handle page filter
     }
-    let rows = await db.execute("SELECT * FROM publications");
+    let rows = await db.execute({ sql: sql, args: args });
     rows = rows.rows;
     res.json(rows);
 });
