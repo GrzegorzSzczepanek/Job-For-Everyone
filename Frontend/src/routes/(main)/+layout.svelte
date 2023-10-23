@@ -67,7 +67,7 @@ function iterate_index() {
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        background: #303133;
+        background: #232325;
     }
     section h2{
         color: #dcd6d6;
