@@ -38,7 +38,7 @@ app.post('/login', async (req, res) => {
         return res.json({ status: "ERROR", message: "Passwords wrong length" });
     }
 
-    let rows = await db.execute({sql: "SELECT * FROM users WHERE username = ?", args: [username]});
+    let rows = await db.execute({sql: "SELECT * FROM users WHERE username = :username", args: { username: username }});
     if (rows.rows.length === 0) {
         return res.json({ status: "ERROR", message: "User does not exist" });
     }
@@ -81,12 +81,12 @@ app.post('/register', async (req, res) => {
         return res.json({ status: "ERROR", message: "Incorrect email format" });
     }
 
-    let rows = await db.execute({sql: "SELECT * FROM users WHERE username = ?", args: [username]});
+    let rows = await db.execute({sql: "SELECT * FROM users WHERE username = :username", args: { username: username }});
     if (rows.rows.length !== 0) {
         return res.json({ status: "ERROR", message: "User already exist" });
     }
 
-    let email_rows = await db.execute({sql: "SELECT * FROM users WHERE email = ?", args: [email]});
+    let email_rows = await db.execute({sql: "SELECT * FROM users WHERE email = :email", args: { email: email }});
     if (email_rows.rows.length !== 0) {
         return res.json({ status: "ERROR", message: "User with this email already exists" });
     }
@@ -119,7 +119,7 @@ app.get('/publication', async (req, res) => {
     if (publication_id === undefined) {
         return res.json({ status: "ERROR", message: "Publication id not provided" });
     }
-    let rows = await db.execute({ sql: "SELECT * FROM publications WHERE id = ?", args: [publication_id] });
+    let rows = await db.execute({ sql: "SELECT * FROM publications WHERE id = :id", args: { id: publication_id }});
     if (rows.rows.length === 0) {
         return res.json({ status: "ERROR", message: "Publication not found" });
     }
@@ -130,9 +130,10 @@ app.get('/publication', async (req, res) => {
 
 app.get('/search', async (req, res) => {
     let query = req.query.query;
-    if (query !== undefined) {
-        // TODO: handle query
+    if (query === undefined) {
+        return res.json({ status: "ERROR", message: "Query string not provided" })
     }
+    // TODO: handle query
     let author = req.query.author;
     if (author !== undefined) {
         // TODO: handle author filter
