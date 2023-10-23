@@ -16,6 +16,7 @@ backend = "http://localhost:3000"
 # - (get)  search
 # - (get)  user
 # - (post) post-comment
+# - (post) post-reply
 
 
 def debug(message):
@@ -50,7 +51,7 @@ class Tests(unittest.TestCase):
         self.assertTrue(len(get("/search", {"query": "test"})) > 0)
 
     def test_user(self):
-        self.assertTrue(ok(get("/user", {"username": "user"})))
+        self.assertTrue(ok(get("/user", {"username": "test"})))
 
     def test_login(self):
         # fmt: off
@@ -70,7 +71,11 @@ class Tests(unittest.TestCase):
 
     def test_post_comment(self):
         # fmt: off
-        self.assertTrue(ok(post("/post-comment", {"username": "user", "comment": "asdf", "review": False})))
+        self.assertTrue(ok(post("/post-comment", {"username": "user", "comment": "asdf"})))
+
+    def test_post_reply(self):
+        # fmt: off
+        self.assertTrue(ok(post("/post-reply", {"username": "user", "comment": "asdf", "reply_to": 1})))
 
 
 if __name__ == "__main__":
