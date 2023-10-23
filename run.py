@@ -10,6 +10,7 @@ suffix = ""
 if name == "nt":
     suffix = ".exe"
 
+
 def clear():
     if name == "nt":
         _ = system("cls")
@@ -20,23 +21,23 @@ def clear():
 def binary_exists(binary):
     if binary == "npm":
         return shutil.which(binary) is not None
-    return shutil.which(binary+suffix) is not None
+    return shutil.which(binary + suffix) is not None
 
 
 def backend_start():
     os.chdir("Backend")
     if binary_exists("bun"):
-        subprocess.run(["bun"+suffix, "install"])
-        subprocess.run(["bun"+suffix, "src/index.ts"])
+        subprocess.run(["bun" + suffix, "install"])
+        subprocess.run(["bun" + suffix, "src/index.ts"])
     elif binary_exists("node") and binary_exists("npm"):
         if name == "nt":
             # windows
             subprocess.run(["npm.cmd", "--silent", "install"])
-            subprocess.run(["node"+suffix, "src/index.ts"])
+            subprocess.run(["node" + suffix, "src/index.ts"])
         else:
             # unix
             subprocess.run(["npm", "install"])
-            subprocess.run(["node"+suffix, "src/index.ts"])
+            subprocess.run(["node" + suffix, "src/index.ts"])
     else:
         print("Neither bun nor npm+node is available. Exiting")
         exit(1)
@@ -45,8 +46,8 @@ def backend_start():
 def frontend_start():
     os.chdir("Frontend")
     if binary_exists("bun"):
-        subprocess.run(["bun"+suffix, "install"])
-        subprocess.run(["bun"+suffix, "run", "dev", "--", "--open"])
+        subprocess.run(["bun" + suffix, "install"])
+        subprocess.run(["bun" + suffix, "run", "dev", "--", "--open"])
     elif binary_exists("npm"):
         if name == "nt":
             # windows
@@ -59,6 +60,7 @@ def frontend_start():
     else:
         print("Neither bun nor npm is available. Exiting")
         exit(1)
+
 
 if __name__ == "__main__":
     clear()
