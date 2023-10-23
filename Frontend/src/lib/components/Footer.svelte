@@ -37,7 +37,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
         width: 100%;
         display: flex;
         justify-content: space-between;
-        font-family: 'Raleway';
+        font-family: 'Montserrat';
         margin-top: auto;
         font-weight: 600;
         background: linear-gradient(#303133,#303133) padding-box,linear-gradient(90deg,#ed6e61,#6359e1) border-box;

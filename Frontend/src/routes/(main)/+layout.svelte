@@ -6,7 +6,9 @@
 
 <div class="app">
     <MainSiteNav />
-    <slot></slot>
+    <main>
+        <slot></slot>
+    </main>
     <Footer />
 </div>
 
@@ -19,5 +21,14 @@
         justify-content: space-between;
         align-items: center;
         background: #232325;
+
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            flex-grow: 1;
+        }
     }
 </style>

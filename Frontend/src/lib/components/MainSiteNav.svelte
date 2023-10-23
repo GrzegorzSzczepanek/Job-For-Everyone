@@ -5,15 +5,11 @@
     import NavMenu from "./NavMenu.svelte";
     import { onMount } from 'svelte';
     import { goto } from "$app/navigation";
-	import { backend, cookies } from "$lib";
+	import { cookies } from "$lib";
 	import { browser } from "$app/environment";
   
-    let username = "Niezalogowany"
+    let username = browser && cookies.get("loggedAs") != undefined ? cookies.get("loggedAs") : "Niezalogowany"
     let showMenu = false;
-
-    if(browser) {
-        username = cookies.get("loggedAs")
-    }
 
     function handleClick(event) {
         event.stopPropagation();
@@ -31,8 +27,8 @@
 </script>
 
 <nav>
-    <div class="logo-container">
-        <img src="/src/lib/images/logo.svg" alt="logo" srcset="" id="logo" on:click={() => goto("/")}>
+    <div class="logo-container" on:click={() => goto("/")}>
+        <img src="/src/lib/images/logo.svg" alt="logo" srcset="" id="logo">
         <span>Scholar Hub</span>
     </div>
     <div id="img_and_logout">
@@ -58,17 +54,15 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
-        background: #333;
-        box-shadow: 0 0 10px rgba(30, 30, 20);
-        padding: 5px 10px;
+        padding: 10px 15px;
 
         .logo-container {
             display: flex;
             align-items: center;
+            cursor: pointer;
 
             #logo {
                 width: 40px;
-                cursor: pointer;
             }
 
             span {
