@@ -1,8 +1,10 @@
 const backendIp = "127.0.0.1";
 
 export const backend = {
-    get: async (endpoint: string, params : object): Promise<any> => {
-        const result = await fetch(`http://${backendIp}:3000/${endpoint}`, params);
+    get: async (endpoint: string, params : URLSearchParams): Promise<any> => {
+        const url = new URL(`http://${backendIp}:3000/${endpoint}`);
+        url.search = new URLSearchParams(params).toString();
+        const result = await fetch(url.toString());
         return await result.json();
     },
     post: async (endpoint: string, params : object): Promise<any> => {
