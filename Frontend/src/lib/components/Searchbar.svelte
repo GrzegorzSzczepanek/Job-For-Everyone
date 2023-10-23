@@ -15,7 +15,7 @@
 <div id="searchbar">
     <input type="text" name="search" id="search" bind:value={query} placeholder="Wyszukaj publikacje... ">
     <span id="icon" on:click={sendQuery}>
-        <Fa icon={faMagnifyingGlass} on:click={sendQuery} size="1.6x" color="#8f9a9c"/>
+        <Fa icon={faMagnifyingGlass} on:click={sendQuery} size="1.2x" color="#8f9a9c"/>
     </span>
 </div>
 
@@ -25,7 +25,7 @@
 
 <style lang="scss">
     #searchbar {
-        width: 65%;
+        width: 600px;
         position: relative;
 
         input {
@@ -36,12 +36,16 @@
             border-radius: 30px;
             text-align: left;
             color: #f9f1ff;
-            font-size: 22px;
-            padding: 10px;
+            font-size: 18px;
+            padding: 10px 15px;
             font-family: "DM Sans";
             -webkit-box-shadow: 1px 9px 12px -8px rgba(22, 22, 22, 1);
             -moz-box-shadow: 1px 9px 12px -8px rgba(22, 22, 22, 1);
             box-shadow: 1px 9px 12px -8px rgba(22, 22, 22, 1);
+
+            &:focus {
+                outline: none;
+            }
         }
 
         #icon {
