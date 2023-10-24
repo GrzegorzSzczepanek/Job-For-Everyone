@@ -1,6 +1,7 @@
 <script>
 	import Fa from 'svelte-fa';
     import { faBook } from '@fortawesome/free-solid-svg-icons'
+    import { backend } from '$lib';
 
     export let id;
     export let title;
@@ -9,10 +10,15 @@
     // export let categories;
     // export let number_of_pages;
 
+    async function goToArticle() {
+        let result = await backend.get("publication", { id: id });
+        console.log(result)
+    }
+
 </script>
 
 <div class="trending">
-    <article>
+    <article on:click={goToArticle}>
         <div>
             <Fa icon={faBook} size="3x", color="#dcd6d6"/>
         </div>

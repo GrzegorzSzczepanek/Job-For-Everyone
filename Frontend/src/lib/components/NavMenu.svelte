@@ -1,6 +1,7 @@
 <script>
 	import { goto } from "$app/navigation";
     import { cookies } from "$lib";
+    import { fly, fade } from 'svelte/transition';
     console.log(cookies)
     function logOut() {
         cookies.delete("loggedAs")
@@ -11,7 +12,7 @@
 </script>
 
 
-<div class="menu">
+<div class="menu"   in:fly={{ x: 50, delay: 0, duration: 300 }} out:fly={{ x: -50, duration: 300 }}>
     <a class="menu-element" href="/user-profile">Profil</a>
     <a class="menu-element" href="#">lorem</a>
     <a class="menu-element" href="#">lorem</a>

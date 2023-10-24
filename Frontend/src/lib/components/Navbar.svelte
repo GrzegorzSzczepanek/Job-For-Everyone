@@ -60,7 +60,7 @@
     }
     .register_button {
         border: 2px solid #C4C4C4;
-        padding: 5px;
+        padding: 6px;
         border-radius: 10px;
         transition: 0.2s;
     }

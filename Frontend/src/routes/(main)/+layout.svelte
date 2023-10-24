@@ -14,6 +14,7 @@
 
 <style lang="scss">
     .app {
+        overflow: hidden;
         max-width: 100%;
         min-height: 100vh;
         display: flex;

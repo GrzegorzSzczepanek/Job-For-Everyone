@@ -4,6 +4,8 @@
     import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 	import PopularPapers from "./Paper.svelte";
 
+    export let position;
+
     let query = "";
     let searchResult = [];
     async function sendQuery() {
@@ -12,7 +14,7 @@
     }
 </script>
 
-<form id="searchbar">
+<form id="searchbar" style="position: {position};">
     <input type="text" name="search" id="search" bind:value={query} placeholder="Wyszukaj publikacje...">
     <button type="submit" id="icon" on:click={sendQuery}>
         <Fa icon={faMagnifyingGlass} on:click={sendQuery} size="1.4x" color="#8f9a9c"/>
@@ -51,6 +53,7 @@
         }
 
         #icon {
+            position: relative;
             position: absolute;
             right: 24px;
             top: 50%;
