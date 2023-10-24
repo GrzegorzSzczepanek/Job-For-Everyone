@@ -107,7 +107,7 @@ app.post('/register', async (req, res) => {
         pass_hash = await bcrypt.hash(password, salt);
     }
 
-    db.execute({ sql: "INSERT INTO users (username, pass_hash, email) VALUES (?, ?, ?)", args: [username, pass_hash, email] });
+    db.execute({ sql: "INSERT INTO users (username, pass_hash, email, verified) VALUES (?, ?, ?, 0)", args: [username, pass_hash, email] });
 
     let user_obj = { username: username, pass_hash: pass_hash };
     let token = jwt.sign(user_obj, session_key);
