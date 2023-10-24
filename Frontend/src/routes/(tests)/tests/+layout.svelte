@@ -1,10 +1,10 @@
 <script>
 	import Footer from "$lib/components/Footer.svelte";
-	import MainSiteNav from "$lib/components/MainSiteNav.svelte";
+	import Navbar from "$lib/components/Navbar.svelte";
 import PublicationOnProfile from "$lib/components/PublicationOnProfile.svelte";
 	import Searchbar from "$lib/components/Searchbar.svelte";
 import UserIcon from "$lib/components/UserIcon.svelte";
-import PopularPapers from "$lib/components/Paper.svelte";
+import Paper from "$lib/components/Paper.svelte";
 
 // Placeholders for now
 let popular_papers = [
@@ -36,7 +36,7 @@ function iterate_index() {
 
 
 <div class="app" on:click{}>
-    <MainSiteNav />
+    <Navbar />
     <slot></slot>
 	<Searchbar />
     <section>
@@ -47,7 +47,7 @@ function iterate_index() {
             {#each popular_papers as paper}
                <li>
                 <p id="index">{iterate_index()}. </p>
-                <PopularPapers {...paper}/>
+                <Paper {...paper}/>
                 </li>
             {/each}
         </ol>

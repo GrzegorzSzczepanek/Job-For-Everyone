@@ -1,11 +1,11 @@
 <script>
 	import Footer from "$lib/components/Footer.svelte";
-	import MainSiteNav from "$lib/components/MainSiteNav.svelte";
+	import Navbar from "$lib/components/Navbar.svelte";
 </script>
 
 
 <div class="app">
-    <MainSiteNav />
+    <Navbar />
     <main>
         <slot></slot>
     </main>

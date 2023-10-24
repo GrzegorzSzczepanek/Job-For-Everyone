@@ -20,9 +20,15 @@ body {
 }
 
 button {
+    font-family: 'DM Sans';
     border: none;
-    color: #b67ede;
+    color: #c4c4c4;
     background: none;
+    font-size: 1em;
     font-weight: bold;
     cursor: pointer;
+}
+
+a {
+    text-decoration: none;
 }
