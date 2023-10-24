@@ -2,7 +2,7 @@
 
 ```sql
 CREATE TABLE users (
-    id int PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     username varchar(255),
     name varchar(255),
     lastname varchar(255),
@@ -15,7 +15,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE publications (
-    id int PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     title text,
     short_desc text,
     category varchar(255),
@@ -23,38 +23,38 @@ CREATE TABLE publications (
 );
 
 CREATE TABLE authors (
-     id int PRIMARY KEY,
-     publication_ID int,
-     user_ID int,
-     FOREIGN KEY (publication_ID) REFERENCES publications(id),
-     FOREIGN KEY (user_ID) REFERENCES users(id)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    publication_ID int,
+    user_ID int,
+    FOREIGN KEY (publication_ID) REFERENCES publications(id),
+    FOREIGN KEY (user_ID) REFERENCES users(id)
 );
 
 CREATE TABLE categories (
-     id int PRIMARY KEY,
-     user_ID int,
-     category varchar(255),
-     FOREIGN KEY (user_ID) REFERENCES users(id)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_ID int,
+    category varchar(255),
+    FOREIGN KEY (user_ID) REFERENCES users(id)
 );
 
 CREATE TABLE comments (
-     id int PRIMARY KEY,
-     user_ID int,
-     publication_ID int,
-     content text,
-     verified boolean,
-     category varchar(255),
-     FOREIGN KEY (user_ID) REFERENCES users(id),
-     FOREIGN KEY (publication_ID) REFERENCES publications(id)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_ID int,
+    publication_ID int,
+    content text,
+    verified boolean,
+    category varchar(255),
+    FOREIGN KEY (user_ID) REFERENCES users(id),
+    FOREIGN KEY (publication_ID) REFERENCES publications(id)
 );
 
 CREATE TABLE replies (
-     id int PRIMARY KEY,
-     user_ID int,
-     publication_ID int,
-     reply text,
-     FOREIGN KEY (publication_ID) REFERENCES publications(id),
-     FOREIGN KEY (user_ID) REFERENCES users(id)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_ID int,
+    publication_ID int,
+    reply text,
+    FOREIGN KEY (publication_ID) REFERENCES publications(id),
+    FOREIGN KEY (user_ID) REFERENCES users(id)
 );
 
 INSERT INTO users (id, username, name, lastname, email, pass_hash, photo, description, education, verified)
