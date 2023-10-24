@@ -11,7 +11,7 @@
 .menu {
     list-style: none;
     background: linear-gradient(#303133,#303133) padding-box,linear-gradient(90deg,#ed6e61,#6359e1) border-box;
-    border: 2px solid transparent;
+    border: 4px solid transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,7 +22,7 @@
 
     .menu-element {
         color: #d8dcd6;
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 600;
         transition: 0.2s ease-in-out;
         cursor: pointer;
