@@ -1,10 +1,9 @@
 <script>
 	import Footer from "$lib/components/Footer.svelte";
 	import Navbar from "$lib/components/Navbar.svelte";
-import PublicationOnProfile from "$lib/components/PublicationOnProfile.svelte";
-	import Searchbar from "$lib/components/Searchbar.svelte";
-import UserIcon from "$lib/components/UserIcon.svelte";
-import Paper from "$lib/components/Paper.svelte";
+// import PublicationOnProfile from "$lib/components/PublicationOnProfile.svelte";
+// import Searchbar from "$lib/components/Searchbar.svelte";
+// import Paper from "$lib/components/Paper.svelte";
 
 // Placeholders for now
 let popular_papers = [
@@ -33,31 +32,13 @@ function iterate_index() {
 }
 
 </script>
-
-
-<div class="app" on:click{}>
+<div class="app">
     <Navbar />
-    <slot></slot>
-	<Searchbar />
-    <section>
-        <h2>
-            Publikacje zyskujące popularność
-        </h2>
-        <ol>
-            {#each popular_papers as paper}
-               <li>
-                <p id="index">{iterate_index()}. </p>
-                <Paper {...paper}/>
-                </li>
-            {/each}
-        </ol>
-        
-
-        <!-- <PopularPapers /> -->
-    </section>
 
     <Footer />
 </div>
+
+
 
 <style lang="scss">
     .app {
@@ -69,20 +50,20 @@ function iterate_index() {
         align-items: center;
         background: #303133;
     }
-    section h2{
-        color: #dcd6d6;
-        font-size: 26px;
-        text-align: center;
-        margin-top: 100px;
-    }
-    ol{
-        list-style: none;
-    }
-    li {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+    // section h2{
+    //     color: #dcd6d6;
+    //     font-size: 26px;
+    //     text-align: center;
+    //     margin-top: 100px;
+    // }
+    // ol{
+    //     list-style: none;
+    // }
+    // li {
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    // }
     #index {
         margin-right: 20px;
         font-size: 20px;

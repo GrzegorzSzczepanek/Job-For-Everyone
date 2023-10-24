@@ -34,10 +34,15 @@
     </div>
 
     <div class="profile-container" on:click={switchMenu}>
-        <span class="profile-name">{username}</span>
-        <UserIcon />
+        {#if username == "Niezalogowany"}
+            <span class="log_button" on:click={() => goto("/login")}>Zaloguj</span>
+            <span class="register_button" on:click={() => goto("/register")}>Zarejestruj</span>
+        {:else}
+            <span class="profile-name">{username}</span>
+            <UserIcon />
+        {/if}
 
-        {#if showMenu}
+        {#if showMenu && username !== "Niezalogowany"}
             <div class="profile-menu">
                 <NavMenu />
             </div>
@@ -46,7 +51,24 @@
 </nav>
 
 <style lang="scss">
+    .log_button, .register_button {
+        color: rgb(225, 220, 209);
+        cursor: pointer;
+    }
+    .log_button {
 
+    }
+    .register_button {
+        border: 2px solid #C4C4C4;
+        padding: 5px;
+        border-radius: 10px;
+        transition: 0.2s;
+    }
+    .register_button:hover {
+        background-color: #C4C4C4;
+        color: #232325;
+        border: #232325 2px solid;
+    }
     nav {
         position: relative;
         width: 100%;

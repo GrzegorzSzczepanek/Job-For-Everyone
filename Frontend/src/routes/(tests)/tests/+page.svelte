@@ -1,12 +1,15 @@
 <script>
 
 </script>
-<h1>
-	Otwarty dostep do wiedzy akademickiej.
-</h1>
+
+<div class="app">
+
+</div>
 
 <style>
-	h1 {
-		color: #dcd6d6 ;
+	.app {
+		width: 100%;
+		min-height: 100vh;
+        background-color: #232325;
 	}
 </style>
