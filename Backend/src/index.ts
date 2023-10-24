@@ -144,14 +144,18 @@ app.get('/search', async (req, res) => {
     if (category !== undefined) {
         // TODO: handle category filter
     }
-    let count = req.query.count;
-    if (count !== undefined) {
-        // TODO: handle count filter
+    let review_count = req.query.review_count;
+    if (review_count !== undefined) {
+        // TODO: handle review count filter
     }
-    let page = req.query.page;
-    if (page !== undefined) {
-        // TODO: handle page filter
-    }
+    // let count = req.query.count;
+    // if (count !== undefined) {
+    //     // TODO: handle count filter
+    // }
+    // let page = req.query.page;
+    // if (page !== undefined) {
+    //     // TODO: handle page filter
+    // }
     let rows = await db.execute({ sql: sql, args: args });
     rows = rows.rows;
     res.json(rows);
@@ -190,6 +194,7 @@ app.post('/post-comment', async (req, res) => {
     // TODO: check if user exists
     // TODO: check if comment is empty
     // TODO: check authentication
+    // TODO: add the comment to the DB
     res.json({ status: "OK" });
 });
 
@@ -205,6 +210,7 @@ app.post('/post-reply', async (req, res) => {
     // TODO: check if user exists
     // TODO: check if comment is empty
     // TODO: check authentication
+    // TODO: add the comment to the DB
     res.json({ status: "OK" });
 });
 
