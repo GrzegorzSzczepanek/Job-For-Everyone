@@ -125,6 +125,11 @@ app.get('/publication', async (req, res) => {
     }
     let publication = rows.rows[0];
     publication["status"] = "OK";
+    let authors = await db.execute({
+        sql: "SELECT users.username, users.name, users.lastname FROM users JOIN authors ON users.id = authors.user_ID WHERE authors.publication_ID = :id",
+        args: { id: publication_id }
+    });
+    publication["authors"] = authors.rows;
     res.json(publication);
 });
 
