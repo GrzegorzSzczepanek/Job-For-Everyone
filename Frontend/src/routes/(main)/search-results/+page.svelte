@@ -2,6 +2,7 @@
 	import Searchbar from "$lib/components/Searchbar.svelte";
 	import { search_result } from "$lib";
 	import SearchedPaper from "$lib/components/SearchedPaper.svelte";
+	import Filters from "$lib/components/Filters.svelte";
 
 	console.log(search_result)
 
@@ -13,7 +14,7 @@
 
 <div id="main_container">
 	<section id="filters">
-		
+		<Filters />
 	</section>
 	<section id="found_papers">
 		{#each search_result as result }
@@ -27,37 +28,43 @@
 	<section id="some_info">
 		<p>
 			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui quibusdam eos vero optio sequi aperiam id iure dolorem explicabo, neque at! Officia soluta eos praesentium cupiditate! Totam consectetur corrupti sequi!
-			Quasi voluptatum dolorem fugiat corporis, aliquid tempora voluptatem quos praesentium exercitationem alias consequuntur unde aspernatur officia quo soluta magni laudantium incidunt rem maiores nam nobis? Ullam aliquid fuga provident aspernatur?
 		</p>
 	</section>
 </div>
 
 
 <style>
-#some_info {
-	text-align: left;
-	width: 75%;
-	height: 60%;
-	background-color: #303030;
-	color: aliceblue;
-	border-radius: 30px;
-}
-#some_info p {
-	margin: 30px;
-}
-#main_container {
-	margin-top: 30px;
-	width: 100%;
-	height: 100%;
-	display: grid;
-	grid-template-columns: 0.2fr 0.6fr 0.2fr;
-}
+	#filters {
+		justify-self: center;
+		align-self: top;
+	}
+	#some_info {
+		display: flex;
+		align-items: center;
+		text-align: left;
+		width: 75%;
+		height: max-content;
+		background-color: #303030;
+		color: aliceblue;
+		border-radius: 30px;
+	}
+	#some_info p {
+		margin: 30px;
+	}
+	#main_container {
+		margin-top: 30px;
+		width: 100%;
+		height: 100%;
+		display: grid;
+		grid-template-columns: 0.2fr 0.6fr 0.2fr;
+		justify-content: center;
+	}
 
-#found_papers {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	grid-column: 2;
-}
+	#found_papers {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		grid-column: 2;
+	}
 
 </style>

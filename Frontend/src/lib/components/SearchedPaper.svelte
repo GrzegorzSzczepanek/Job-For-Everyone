@@ -15,7 +15,13 @@
     <!-- <address class="author">By <a rel="author" href="/author/john-doe">}</a></address>  -->
     <p>
         <span id="author">Authors:</span>
-        <span id="authors">{authors}</span>
+        <span id="authors">
+        {#if authors != undefined  && authors.join(" ").lenght > 50}
+            {authors.join(" ").slice(0, 47)}...
+        {:else}
+            {authors}
+        {/if}
+        </span>
     </p>
 
     <p id="description">
@@ -41,6 +47,7 @@
         color: antiquewhite;
     }
     h3 {
+        margin-left: 20px;
         font-size: 20px;
     }
     article:hover {
@@ -48,12 +55,14 @@
     }
 
     #author {
+        margin-left: 22px;
         font-size: 16px;
     }
     #authors {
         font-size: 12px;
     }
     #description {
+        margin-left: 20px;
         margin-top: 10px;
         font-size: 13px;
         color: #9c989f;

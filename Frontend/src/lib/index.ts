@@ -5,6 +5,8 @@ let search_result;
 function set_search_result(value) {
     search_result = value;
 }
+
+
 export {search_result, set_search_result}
 
 export const backend = {
