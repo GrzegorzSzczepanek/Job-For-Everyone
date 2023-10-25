@@ -2,7 +2,11 @@
 
 ```sql
 CREATE TABLE users (
+<<<<<<< Updated upstream
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+=======
+    id INTEGER PRIMARY KEY,
+>>>>>>> Stashed changes
     username varchar(255),
     name varchar(255),
     lastname varchar(255),
@@ -15,7 +19,11 @@ CREATE TABLE users (
 );
 
 CREATE TABLE publications (
+<<<<<<< Updated upstream
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+=======
+    id INTEGER PRIMARY KEY,
+>>>>>>> Stashed changes
     title text,
     short_desc text,
     category varchar(255),
@@ -23,7 +31,11 @@ CREATE TABLE publications (
 );
 
 CREATE TABLE authors (
+<<<<<<< Updated upstream
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+=======
+    id INTEGER PRIMARY KEY,
+>>>>>>> Stashed changes
     publication_ID int,
     user_ID int,
     FOREIGN KEY (publication_ID) REFERENCES publications(id),
@@ -31,14 +43,22 @@ CREATE TABLE authors (
 );
 
 CREATE TABLE categories (
+<<<<<<< Updated upstream
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+=======
+    id INTEGER PRIMARY KEY,
+>>>>>>> Stashed changes
     user_ID int,
     category varchar(255),
     FOREIGN KEY (user_ID) REFERENCES users(id)
 );
 
 CREATE TABLE comments (
+<<<<<<< Updated upstream
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+=======
+    id INTEGER PRIMARY KEY,
+>>>>>>> Stashed changes
     user_ID int,
     publication_ID int,
     content text,
@@ -49,7 +69,11 @@ CREATE TABLE comments (
 );
 
 CREATE TABLE replies (
+<<<<<<< Updated upstream
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+=======
+    id INTEGER PRIMARY KEY,
+>>>>>>> Stashed changes
     user_ID int,
     publication_ID int,
     reply text,

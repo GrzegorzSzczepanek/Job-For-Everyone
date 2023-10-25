@@ -29,7 +29,6 @@ app.post('/login', async (req, res) => {
     let body = req.body;
     let username = body.username;
     let password = body.password;
-
     if (username == "" || password == "") {
         return res.json({ status: "ERROR", message: "Fields must not be empty" });
     }
@@ -192,12 +191,20 @@ app.post('/post-comment', async (req, res) => {
     let body = req.body;
     let username = body.username;
     let comment = body.comment;
+    let sql ={sql: "SELECT * FROM users WHERE username= :username", args: { username: username }};
     console.log(body, username, comment);
     if (username === undefined || comment === undefined) {
-        return res.json({ status: "ERROR", message: "Fields must not be empty" });
+         return res.json({ status: "ERROR", message: "Fields must not be empty" });
     }
-    // TODO: check if user exists
-    // TODO: check if comment is empty
+    const rows = await db.execute(sql);
+    if(rows.rows.length == 0) {
+         return res.json({ status: "ERROR", message: "User not found" });
+    }
+    if(comment.length == 0) {
+        return res.json({ status: "ERROR", message: "Comment is empty" });
+    } 
+    // TODO: check if user exists - DONE
+    // TODO: check if comment is empty - DONE
     // TODO: check authentication
     // TODO: add the comment to the DB
     res.json({ status: "OK" });
@@ -206,14 +213,30 @@ app.post('/post-comment', async (req, res) => {
 app.post('/post-reply', async (req, res) => {
     let body = req.body;
     let username = body.username;
-    let comment = body.comment;
+    let reply = body.reply;
     let reply_to = body.reply_to;
-    console.log(body, username, comment);
-    if (username === undefined || comment === undefined || reply_to === undefined) {
+    let sql ={sql: "SELECT * FROM users WHERE username= :username", args: { username: username }};
+    const rows = await db.execute(sql);
+    let user_ID;
+    console.log(body, username, reply);
+    if (username === undefined || reply === undefined || reply_to === undefined) {
         return res.json({ status: "ERROR", message: "Fields must not be empty" });
     }
-    // TODO: check if user exists
-    // TODO: check if comment is empty
+    if(rows.rows.length == 0) {
+         return res.json({ status: "ERROR", message: "User not found" });
+    }
+    user_ID = rows.rows[0]['id'];
+    if(reply.length == 0) {
+        return res.json({ status: "ERROR", message: "Reply is empty" });
+    }
+   try {
+        db.execute({sql: "INSERT INTO replies (user_ID, publication_ID, reply) VALUES (?, ?, ?)", args: [user_ID, reply_to, reply] });
+    } catch (error) {
+        console.log(error);
+        return res.json({ status: "ERROR", message: "Error during execute SQL statement" });
+    } 
+    // TODO: check if user exists - DONE
+    // TODO: check if reply is empty - DONE
     // TODO: check authentication
     // TODO: add the comment to the DB
     res.json({ status: "OK" });
