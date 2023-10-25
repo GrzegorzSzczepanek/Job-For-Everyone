@@ -3,14 +3,22 @@
     import Fa from 'svelte-fa'
     import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 	import PopularPapers from "./Paper.svelte";
+    import { search_result, set_search_result } from "$lib";
+	import { goto } from "$app/navigation";
 
     export let position;
 
     let query = "";
     let searchResult = [];
     async function sendQuery() {
+        searchResult = []
         searchResult = await backend.get("search", { query: query });
-        console.log(searchResult)
+        set_search_result(searchResult)
+        if (searchResult.length > 0) {
+            goto("/search-results")
+        }
+        // console.log(searchResult)
+        // console.log(search_result)
     }
 </script>
 

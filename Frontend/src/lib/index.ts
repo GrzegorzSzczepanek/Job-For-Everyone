@@ -1,5 +1,12 @@
 const backendIp = "127.0.0.1";
 
+let search_result;
+
+function set_search_result(value) {
+    search_result = value;
+}
+export {search_result, set_search_result}
+
 export const backend = {
     get: async (endpoint: string, params : URLSearchParams): Promise<any> => {
         const url = new URL(`http://${backendIp}:3000/${endpoint}`);

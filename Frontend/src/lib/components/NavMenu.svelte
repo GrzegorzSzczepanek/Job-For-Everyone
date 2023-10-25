@@ -25,6 +25,7 @@
     list-style: none;
     background: linear-gradient(#303133,#303133) padding-box,linear-gradient(90deg,#ed6e61,#6359e1) border-box;
     border: 2px solid transparent;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
