@@ -192,7 +192,6 @@ app.post('/post-comment', async (req, res) => {
     let username = body.username;
     let comment = body.comment;
     let sql ={sql: "SELECT * FROM users WHERE username= :username", args: { username: username }};
-    console.log(body, username, comment);
     if (username === undefined || comment === undefined) {
          return res.json({ status: "ERROR", message: "Fields must not be empty" });
     }
@@ -202,7 +201,7 @@ app.post('/post-comment', async (req, res) => {
     }
     if(comment.length == 0) {
         return res.json({ status: "ERROR", message: "Comment is empty" });
-    } 
+    }
     // TODO: check if user exists - DONE
     // TODO: check if comment is empty - DONE
     // TODO: check authentication
@@ -218,7 +217,6 @@ app.post('/post-reply', async (req, res) => {
     let sql ={sql: "SELECT * FROM users WHERE username= :username", args: { username: username }};
     const rows = await db.execute(sql);
     let user_ID;
-    console.log(body, username, reply);
     if (username === undefined || reply === undefined || reply_to === undefined) {
         return res.json({ status: "ERROR", message: "Fields must not be empty" });
     }
@@ -234,7 +232,7 @@ app.post('/post-reply', async (req, res) => {
     } catch (error) {
         console.log(error);
         return res.json({ status: "ERROR", message: "Error during execute SQL statement" });
-    } 
+    }
     // TODO: check if user exists - DONE
     // TODO: check if reply is empty - DONE
     // TODO: check authentication

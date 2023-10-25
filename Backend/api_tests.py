@@ -71,11 +71,11 @@ class Tests(unittest.TestCase):
 
     def test_post_comment(self):
         # fmt: off
-        self.assertTrue(ok(post("/post-comment", {"username": "user", "comment": "asdf"})))
+        self.assertTrue(ok(post("/post-comment", {"username": "test", "comment": "asdf"})))
 
     def test_post_reply(self):
         # fmt: off
-        self.assertTrue(ok(post("/post-reply", {"username": "user", "comment": "asdf", "reply_to": 1})))
+        self.assertTrue(ok(post("/post-reply", {"username": "test", "reply": "asdf", "reply_to": 1})))
 
 
 if __name__ == "__main__":
