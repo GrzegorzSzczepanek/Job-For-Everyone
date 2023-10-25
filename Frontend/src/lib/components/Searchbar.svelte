@@ -20,9 +20,10 @@
         // console.log(searchResult)
         // console.log(search_result)
     }
+    export let classname;
 </script>
 
-<form id="searchbar" style="position: {position};">
+<form id="searchbar" class={classname}>
     <input type="text" name="search" id="search" bind:value={query} placeholder="Wyszukaj publikacje...">
     <button type="submit" id="icon" on:click={sendQuery}>
         <Fa icon={faMagnifyingGlass} on:click={sendQuery} size="1.4x" color="#8f9a9c"/>
@@ -68,6 +69,9 @@
             transform: translateY(-50%);
             cursor: pointer;
         }
+    }
+    .search_navbar {
+        position: absolute;
     }
 
 </style>

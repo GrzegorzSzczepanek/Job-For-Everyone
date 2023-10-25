@@ -6,10 +6,10 @@
 	console.log(search_result)
 
 	// ToDo left
-
+	
 </script>
 
-<!-- <Searchbar position="absolute"/> -->
+<Searchbar classname="search_navbar"/>
 
 <div id="main_container">
 	<section id="filters">
@@ -24,14 +24,27 @@
 		{/each}
 	
 	</section>
-	<section id="">
-
+	<section id="some_info">
+		<p>
+			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui quibusdam eos vero optio sequi aperiam id iure dolorem explicabo, neque at! Officia soluta eos praesentium cupiditate! Totam consectetur corrupti sequi!
+			Quasi voluptatum dolorem fugiat corporis, aliquid tempora voluptatem quos praesentium exercitationem alias consequuntur unde aspernatur officia quo soluta magni laudantium incidunt rem maiores nam nobis? Ullam aliquid fuga provident aspernatur?
+		</p>
 	</section>
 </div>
 
 
 <style>
-
+#some_info {
+	text-align: left;
+	width: 75%;
+	height: 60%;
+	background-color: #303030;
+	color: aliceblue;
+	border-radius: 30px;
+}
+#some_info p {
+	margin: 30px;
+}
 #main_container {
 	margin-top: 30px;
 	width: 100%;

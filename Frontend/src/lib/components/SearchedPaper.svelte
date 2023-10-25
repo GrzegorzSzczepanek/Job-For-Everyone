@@ -31,14 +31,20 @@
 
     article {
         margin: 20px;
-        background: linear-gradient(#303133,#303133);
+        background-color: #303133;
         border-radius: 20px;
         -webkit-box-shadow: 0px 13px 7px 5px rgba(32, 32, 35, 1);
         -moz-box-shadow: 0px 13px 7px 5px rgba(32, 32, 35, 1);
         box-shadow: 0px 13px 7px 5px rgba(32, 32, 35, 1);
+        transition: 0.1s;
+        cursor: pointer;
+        color: antiquewhite;
     }
     h3 {
         font-size: 20px;
+    }
+    article:hover {
+        background-color: #45474b;
     }
 
     #author {
@@ -50,5 +56,6 @@
     #description {
         margin-top: 10px;
         font-size: 13px;
+        color: #9c989f;
     }
 </style>
