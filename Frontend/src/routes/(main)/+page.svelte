@@ -1,4 +1,5 @@
 <script>
+	import Navbar from "$lib/components/Navbar.svelte";
 	import Paper from "$lib/components/Paper.svelte";
 	import Searchbar from "$lib/components/Searchbar.svelte";
 
@@ -28,10 +29,10 @@
 	}
 
 </script>
+<Navbar />
 <h1>
 	Otwarty dostep do wiedzy akademickiej.
 </h1>
-
 <Searchbar />
 <section>
 	<h2>

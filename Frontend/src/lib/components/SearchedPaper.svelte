@@ -36,7 +36,7 @@
 <style>
 
     article {
-        margin: 20px;
+        margin:0px 20px  20px 0;
         background-color: #303133;
         border-radius: 20px;
         -webkit-box-shadow: 0px 13px 7px 5px rgba(32, 32, 35, 1);

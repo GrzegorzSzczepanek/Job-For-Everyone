@@ -29,16 +29,18 @@
         <h3>
             Autor
         </h3>
-        <div>
+        <div id="input_and_button">
             <input type="text">
-            <Fa icon={ faX }/>
+            <div class="icon">
+                <Fa icon={ faX } color="antiquewhite"/>
+            </div>
         </div>
     </section>
     <section id="find_by_opinion">
         <h3>
             Liczba opinii
         </h3>
-        <p>Od <input type="number" class="number_input"> do<input type="number" class="number_input"></p>
+        <p>Od <input type="number" class="number_input"> <span class="icon"><Fa icon={faX} /></span> do<input type="number" class="number_input"><span class="icon"><Fa icon={faX} /></span></p>
     </section>
     <section id="find_by_publish_date">
         <h3>
@@ -53,15 +55,14 @@
 <style>
     h3, input, p {
         color: antiquewhite;
-        margin-left: 15px;
+        /* margin-left: 15px; */
     }
-    span {
+    #find_by_publish_date p span {
         margin-top: 5px;
     }
     input {
-            border: none;
-            background: linear-gradient(#303133,#303133) padding-box,linear-gradient(90deg,#ed6e61,#6359e1) border-box;
-            border: 2px solid transparent;
+            background: #303133;
+            border: 2px solid antiquewhite;
             border-radius: 20px;
             text-align: left;
             color: #f9f1ff;
@@ -69,7 +70,8 @@
             font-family: "DM Sans";
             box-shadow: none;
             transition: box-shadow 0.3s;
-
+            font-weight: 600;
+            padding: 2px;
             &:focus {
                 outline: none;
                 -webkit-box-shadow: 1px 9px 15px -5px rgba(25, 25, 25, 1);
@@ -78,7 +80,8 @@
             }
         }
     .number_input {
-        width: 30px;
+        width: 50px;
+        margin-left: 10px;
     }
     .date_input {
     }
@@ -102,6 +105,7 @@
         flex-wrap: wrap;
     }
     .category_name {
+        color: #c4c4c4;
         border-radius: 20px;
         padding: 5px;
         margin: 5px;
@@ -113,5 +117,7 @@
     .category_name:hover {
         filter: brightness(120%);
     }
-
+    #input_and_button {
+        display: flex;
+    }
 </style>
