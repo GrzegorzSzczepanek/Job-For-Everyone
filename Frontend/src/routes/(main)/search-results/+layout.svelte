@@ -35,12 +35,10 @@
 
 
 <style>
-	#search_navbar {
-		position: absolute;
-		top: 100px;
-	}
+
 	#filters {
-		justify-self: center;
+        display: flex;
+		justify-content: center;
 		align-self: top;
 	}
 	#some_info {
@@ -52,12 +50,16 @@
 		background-color: #303030;
 		color: aliceblue;
 		border-radius: 30px;
+        -webkit-box-shadow: 0px 13px 7px 5px rgba(32, 32, 35, 1);
+        -moz-box-shadow: 0px 13px 7px 5px rgba(32, 32, 35, 1);
+        box-shadow: 0px 13px 7px 5px rgba(32, 32, 35, 1);
 	}
 	#some_info p {
 		margin: 30px;
+
 	}
 	#main_container {
-		margin-top: 30px;
+		margin-top: 130px;
 		width: 100%;
 		height: 100%;
 		display: grid;

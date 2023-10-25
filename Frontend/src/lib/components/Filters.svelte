@@ -9,6 +9,10 @@
     }
     let categories_set = new Set(available_categories);
 
+    function clear_name_input() {
+        document.getElementById("name_input").value = "";
+    }
+
 </script>
 
 <section id="container">
@@ -30,8 +34,8 @@
             Autor
         </h3>
         <div id="input_and_button">
-            <input type="text">
-            <div class="icon">
+            <input type="text" id="name_input">
+            <div class="icon" on:click={clear_name_input}>
                 <Fa icon={ faX } color="antiquewhite"/>
             </div>
         </div>
@@ -40,7 +44,11 @@
         <h3>
             Liczba opinii
         </h3>
-        <p>Od <input type="number" class="number_input"> <span class="icon"><Fa icon={faX} /></span> do<input type="number" class="number_input"><span class="icon"><Fa icon={faX} /></span></p>
+        <p>Od <input type="number" class="number_input"> 
+            <!-- <span class="icon"><Fa icon={faX} /></span> -->
+            do<input type="number" class="number_input">
+            <!-- <span class="icon"><Fa icon={faX} /></span> -->
+        </p>
     </section>
     <section id="find_by_publish_date">
         <h3>
@@ -53,6 +61,9 @@
 </section>
 
 <style>
+    #container {
+        width: 75%;
+    }
     h3, input, p {
         color: antiquewhite;
         /* margin-left: 15px; */
@@ -82,6 +93,10 @@
     .number_input {
         width: 50px;
         margin-left: 10px;
+    }
+    .icon {
+        margin-left: 5px;
+        cursor: pointer;
     }
     .date_input {
     }

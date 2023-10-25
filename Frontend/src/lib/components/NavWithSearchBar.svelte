@@ -72,6 +72,7 @@
     }
     nav {
         position: fixed;
+        background-color: #232325;
         top: 0;
         width: 100%;
         display: flex;
