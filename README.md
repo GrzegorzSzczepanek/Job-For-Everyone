@@ -9,6 +9,5 @@
 
 ## Login and Register
 ![image](https://github.com/Foxyg3n/BestHacksTest/assets/113286903/a1bcfbab-1225-4e2a-8eaa-2bc1f2d59773)![image](https://github.com/Foxyg3n/BestHacksTest/assets/113286903/6ab9fd45-f12f-4a9e-ad0f-1a867dbd691d)![image](https://github.com/Foxyg3n/BestHacksTest/assets/113286903/e5613797-787e-4f50-b4f3-854fd3380039)
-![Uploading image.png…]()
 
 
