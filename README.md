@@ -14,3 +14,4 @@
 
 ![image](https://github.com/GrzegorzSzczepanek/SciHub/assets/113286903/829bea89-88fc-455b-83ec-c7608a9688ac)
 
+### to set the backend up you just run script run.py
