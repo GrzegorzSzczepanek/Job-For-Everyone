@@ -1,13 +1,16 @@
 # SciHub (work in progress)
 
 ## We cooperated to make a platform for scientific community to publish their papers and have possibility to review them.
-![image](https://github.com/Foxyg3n/BestHacksTest/assets/113286903/e2fae08e-3092-4e74-a793-bcd2e69ed260)
+![image](https://github.com/GrzegorzSzczepanek/SciHub/assets/113286903/5c81e216-dff7-4fa1-a18f-fd508a9e06f5)
+
 
 ## It has working search engine
-![image](https://github.com/Foxyg3n/BestHacksTest/assets/113286903/13aadac8-56df-4a0f-8701-9a2141ee9be9)
+![image](https://github.com/GrzegorzSzczepanek/SciHub/assets/113286903/753354e7-5cf2-493f-8741-1ea040497eec)
+
 
 
 ## Login and Register
-![image](https://github.com/Foxyg3n/BestHacksTest/assets/113286903/a1bcfbab-1225-4e2a-8eaa-2bc1f2d59773)![image](https://github.com/Foxyg3n/BestHacksTest/assets/113286903/6ab9fd45-f12f-4a9e-ad0f-1a867dbd691d)![image](https://github.com/Foxyg3n/BestHacksTest/assets/113286903/e5613797-787e-4f50-b4f3-854fd3380039)
+![image](https://github.com/GrzegorzSzczepanek/SciHub/assets/113286903/8dff36b8-4164-4566-afcc-84b8125a3954)
 
+![image](https://github.com/GrzegorzSzczepanek/SciHub/assets/113286903/829bea89-88fc-455b-83ec-c7608a9688ac)
 
