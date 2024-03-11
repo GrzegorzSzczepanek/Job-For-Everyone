@@ -2,7 +2,8 @@
 
 Job For Everyone is a platform designed to make it easier for disabled people to find job offers. We aim to make offers more inclusive and require from recruiters to share if their workplace is accustomed to disabled.
 
-![Job For Everyone Screenshot](https://github.com/GrzegorzSzczepanek/Job-For-Everyone/assets/113286903/5c81e216-dff7-4fa1-a18f-fd508a9e06f5)
+![image](https://github.com/GrzegorzSzczepanek/SciHub/assets/113286903/ba69a1fb-213d-4553-8154-a31719f4628c)
+
 
 ## Features
 
@@ -12,8 +13,10 @@ Job For Everyone is a platform designed to make it easier for disabled people to
 
 - **User Authentication**: Users can register and log in to Job For Everyone, enabling personalized experiences to publish new job offer or find a position for themselves.
 
-    ![Login](https://github.com/GrzegorzSzczepanek/Job For Everyone/assets/113286903/8dff36b8-4164-4566-afcc-84b8125a3954)
-    ![Register](https://github.com/GrzegorzSzczepanek/Job For Everyone/assets/113286903/829bea89-88fc-455b-83ec-c7608a9688ac)
+    ![image](https://github.com/GrzegorzSzczepanek/SciHub/assets/113286903/ba35ed43-fe61-40c5-a1e4-8ba8690eb2df)
+
+    ![image](https://github.com/GrzegorzSzczepanek/SciHub/assets/113286903/316d3bc0-ce12-4c0b-aff1-43b007c33cf3)
+
 
 ## Getting Started
 
