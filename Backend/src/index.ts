@@ -13,7 +13,7 @@ const app = express();
 
 const db = createClient({
     url: 'libsql://closing-kree-figyel0002.turso.io',
-    authToken: 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOiIyMDIzLTEwLTE4VDIwOjU2OjQzLjg2ODYwNDg4NVoiLCJpZCI6IjU1ZTFkMGNhLTZkZjgtMTFlZS1hYTY0LThhMzhjZTlmZjA5NSJ9.D_lnuc3RVHewV9DaA47dRysdyBbnsX1sUUEAr99qftlQgndCfOlqmqciwV3bAnAcrN8SWHR8SlxDOk8ZBarlCg'
+    authToken: // your auth token here
 });
 const session_key = 'dihllskjdindrtidjlhmuflrkunho57jy374y7328&#$YHIERI'
 
