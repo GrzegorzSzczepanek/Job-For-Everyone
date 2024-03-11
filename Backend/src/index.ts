@@ -12,7 +12,7 @@ const jwt = require('jsonwebtoken');
 const app = express();
 
 const db = createClient({
-    url: 'libsql://closing-kree-figyel0002.turso.io',
+    url: // your database url,
     authToken: // your auth token here
 });
 const session_key = 'dihllskjdindrtidjlhmuflrkunho57jy374y7328&#$YHIERI'
