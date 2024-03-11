@@ -7,7 +7,7 @@ Job For Everyone is a platform designed to make it easier for disabled people to
 
 ## Features
 
-- **Search Engine**: Job For Everyone features a search engine that allows users to easily find papers of interest.
+- **Search Engine**: Job For Everyone features a search engine that allows users to easily find papers of interest. Right now it may not work because our sql database is disabled for now.
 
     ![Search Engine](https://github.com/GrzegorzSzczepanek/SciHub/assets/113286903/753354e7-5cf2-493f-8741-1ea040497eec)
 
