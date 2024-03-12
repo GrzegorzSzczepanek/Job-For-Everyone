@@ -26,10 +26,11 @@ To set up the backend for Job For Everyone, follow these steps:
 `git clone https://github.com/GrzegorzSzczepanek/Job-For-Everyone.git`
 
 2. Navigate to the project directory:
-`cd Job-For-Everyone`
+`cd Job-For-Everyone/frontend`
 
-3. Run the backend setup script:
-`python run.py`
+3. Run the setup:
+`bun install`
+`bun run dev`
 
 ## License
 
